@@ -1,0 +1,37 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>shangjia.png</file>
+    <file>xiajia.png</file>
+    <file>huifubeifen.png</file>
+    <file>beifen.png</file>
+    <file>shanchu.png</file>
+    <file>zengjia.png</file>
+    <file>dizhiguanli.png</file>
+    <file>back.png</file>
+    <file>caiwu.png</file>
+    <file>fawu.png</file>
+    <file>fresh.png</file>
+    <file>guanli.png</file>
+    <file>houqin.png</file>
+    <file>insert.png</file>
+    <file>jishu.png</file>
+    <file>log-in.png</file>
+    <file>log-out.png</file>
+    <file>nan.png</file>
+    <file>next.png</file>
+    <file>nv.png</file>
+    <file>ok.png</file>
+    <file>print.png</file>
+    <file>register.png</file>
+    <file>renshi.png</file>
+    <file>reset.png</file>
+    <file>search.png</file>
+    <file>selfinfo.png</file>
+    <file>settle.png</file>
+    <file>subscribe.png</file>
+    <file>tongji-2.png</file>
+    <file>UserSettings.png</file>
+    <file>weihu.png</file>
+    <file>yunying.png</file>
+  </qresource>
+</RCC>
