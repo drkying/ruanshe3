@@ -1,48 +1,15 @@
 import hashlib
 
-import pymysql
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QMessageBox, QTableWidgetItem, QHeaderView, QGridLayout
+from PyQt5 import QtCore, QtWidgets
 
+from Model.dataUtils import *
+from Model.Values import Values
 from View import LoginWindow
 
-class Values:
-    CurrentUser = ""
-    CurrentPermission = ""
-
-    def clear(self):
-        self.CurrentUser = ""
-        self.CurrentPermission = ""
-
-
-def sqlconn():
-    connect = pymysql.connect(
-        host="127.0.0.1",
-        user="root",
-        password="hityys123",
-        database="Subscribe",
-        autocommit=True
-    )
-    cursor = connect.cursor()
-    return connect, cursor
-
-def WarningBox(c, info):
-    c.box = QMessageBox(QMessageBox.Warning, "Failed", info)
-    yes = c.box.addButton('确定', QMessageBox.YesRole)
-    c.box.setIcon(2)
-    c.box.show()
-
-
-def SuccBox(c, info):
-    c.box = QMessageBox(QMessageBox.Information, "Success", info)
-    yes = c.box.addButton('ok', QMessageBox.YesRole)
-    c.box.setIcon(1)
-    c.box.show()
 
 class Login(QtWidgets.QMainWindow, LoginWindow.Ui_MainWindow):
-    #switch_register = QtCore.pyqtSignal()
-    #switch_login = QtCore.pyqtSignal()
+    switch_register = QtCore.pyqtSignal()
+    switch_login = QtCore.pyqtSignal()
 
     def __init__(self):
         super(Login, self).__init__()
@@ -65,7 +32,7 @@ class Login(QtWidgets.QMainWindow, LoginWindow.Ui_MainWindow):
         passwd = str(self.lineEdit_passwd.text())
         passwd = hashlib.md5(passwd.encode('UTF-8')).hexdigest()
         permission = str(self.comboBox_Permissions.currentText())
-        if True:
+        if is_legal(usrname):
             if permission == "管理员":
                 sql = "select * from root where usrname='" + usrname + "' and passwd='" + passwd + "'"
                 Values.CurrentPermission = "root"

@@ -135,4 +135,6 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "账号："))
         self.label_3.setText(_translate("MainWindow", "身份权限："))
         self.label_2.setText(_translate("MainWindow", "密码："))
+
+
 import resource_rc
