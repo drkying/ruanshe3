@@ -119,6 +119,11 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         self.comboBox_Permissions.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        MainWindow.setTabOrder(self.lineEdit_usrname, self.lineEdit_passwd)
+        MainWindow.setTabOrder(self.lineEdit_passwd, self.comboBox_Permissions)
+        MainWindow.setTabOrder(self.comboBox_Permissions, self.pushButton_login)
+        MainWindow.setTabOrder(self.pushButton_login, self.pushButton_reset)
+        MainWindow.setTabOrder(self.pushButton_reset, self.pushButton_register)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -135,6 +140,4 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "账号："))
         self.label_3.setText(_translate("MainWindow", "身份权限："))
         self.label_2.setText(_translate("MainWindow", "密码："))
-
-
 import resource_rc

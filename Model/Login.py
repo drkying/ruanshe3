@@ -21,6 +21,8 @@ class Login(QtWidgets.QMainWindow, LoginWindow.Ui_MainWindow):
         self.pushButton_reset.clicked.connect(self.lineEdit_passwd.clear)
         self.pushButton_login.clicked.connect(self.login)
         self.pushButton_register.clicked.connect(self.register)
+        self.lineEdit_usrname.returnPressed.connect(self.login)
+        self.lineEdit_passwd.returnPressed.connect(self.login)
 
     def register(self):
         self.switch_register.emit()
