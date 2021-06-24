@@ -42,3 +42,13 @@ def is_int_id(id):
             return False
     except Exception:
         return False
+
+
+def is_price(price):
+    try:
+        if float(price) > 0:
+            return True
+        else:
+            return False
+    except Exception:
+        return False

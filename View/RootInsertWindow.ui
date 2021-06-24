@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>MainWindow</class>
+    <widget class="QMainWindow" name="MainWindow">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>800</width>
+                <height>600</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>MainWindow</string>
+        </property>
+        <widget class="QWidget" name="centralwidget">
+            <widget class="QPushButton" name="pushButton_back">
+                <property name="geometry">
+                    <rect>
+                        <x>510</x>
+                        <y>480</y>
+                        <width>112</width>
+                        <height>32</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>back</string>
+                </property>
+                <property name="icon">
+                    <iconset>
+                        <normalon>:/icon/back.png</normalon>
+                    </iconset>
+                </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_fresh">
+                <property name="geometry">
+                    <rect>
+                        <x>660</x>
+                        <y>430</y>
+                        <width>112</width>
+                        <height>32</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>刷新</string>
+                </property>
+                <property name="icon">
+                    <iconset>
+                        <normalon>:/icon/fresh.png</normalon>
+                    </iconset>
+                </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_up">
+                <property name="geometry">
+                    <rect>
+                        <x>510</x>
+                        <y>380</y>
+                        <width>112</width>
+                        <height>32</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>上架</string>
+                </property>
+                <property name="icon">
+                    <iconset>
+                        <normalon>:/icon/shangjia.png</normalon>
+                    </iconset>
+                </property>
+            </widget>
+            <widget class="QLineEdit" name="lineEdit_newsid">
+                <property name="geometry">
+                    <rect>
+                        <x>550</x>
+                        <y>90</y>
+                        <width>151</width>
+                        <height>31</height>
+                    </rect>
+                </property>
+                <property name="placeholderText">
+                    <string>input newsid</string>
+                </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_logout">
+                <property name="geometry">
+                    <rect>
+                        <x>660</x>
+                        <y>480</y>
+                        <width>112</width>
+                        <height>32</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Logout</string>
+                </property>
+                <property name="icon">
+                    <iconset>
+                        <normalon>:/icon/log-out.png</normalon>
+                    </iconset>
+                </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_down">
+                <property name="geometry">
+                    <rect>
+                        <x>660</x>
+                        <y>380</y>
+                        <width>112</width>
+                        <height>32</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>下架</string>
+                </property>
+                <property name="icon">
+                    <iconset>
+                        <normalon>:/icon/xiajia.png</normalon>
+                    </iconset>
+                </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_update">
+                <property name="geometry">
+                    <rect>
+                        <x>580</x>
+                        <y>330</y>
+                        <width>112</width>
+                        <height>32</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>修改</string>
+                </property>
+                <property name="icon">
+                    <iconset>
+                        <normalon>:/icon/insert.png</normalon>
+                    </iconset>
+                </property>
+            </widget>
+            <widget class="QTableWidget" name="tableWidget">
+                <property name="geometry">
+                    <rect>
+                        <x>60</x>
+                        <y>80</y>
+                        <width>401</width>
+                        <height>441</height>
+                    </rect>
+                </property>
+                <property name="editTriggers">
+                    <set>QAbstractItemView::NoEditTriggers</set>
+                </property>
+                <column>
+                    <property name="text">
+                        <string>newsid</string>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>newsname</string>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>price</string>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>style</string>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>issell</string>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string/>
+                    </property>
+                </column>
+            </widget>
+            <widget class="QLineEdit" name="lineEdit_newsname">
+                <property name="geometry">
+                    <rect>
+                        <x>550</x>
+                        <y>130</y>
+                        <width>151</width>
+                        <height>31</height>
+                    </rect>
+                </property>
+                <property name="placeholderText">
+                    <string>input newsname</string>
+                </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_insert">
+                <property name="geometry">
+                    <rect>
+                        <x>510</x>
+                        <y>430</y>
+                        <width>112</width>
+                        <height>32</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>录入</string>
+                </property>
+                <property name="icon">
+                    <iconset>
+                        <normalon>:/icon/insert.png</normalon>
+                    </iconset>
+                </property>
+                <property name="shortcut">
+                    <string>Return</string>
+                </property>
+            </widget>
+            <widget class="QComboBox" name="comboBox_style">
+                <property name="geometry">
+                    <rect>
+                        <x>550</x>
+                        <y>210</y>
+                        <width>151</width>
+                        <height>31</height>
+                    </rect>
+                </property>
+                <property name="focusPolicy">
+                    <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="placeholderText">
+                    <string/>
+                </property>
+                <property name="duplicatesEnabled">
+                    <bool>false</bool>
+                </property>
+                <item>
+                    <property name="text">
+                        <string>-请选择类别-</string>
+                    </property>
+                </item>
+                <item>
+                    <property name="text">
+                        <string>新闻</string>
+                    </property>
+                </item>
+                <item>
+                    <property name="text">
+                        <string>学术</string>
+                    </property>
+                </item>
+                <item>
+                    <property name="text">
+                        <string>娱乐</string>
+                    </property>
+                </item>
+            </widget>
+            <widget class="QLabel" name="label">
+                <property name="geometry">
+                    <rect>
+                        <x>320</x>
+                        <y>21</y>
+                        <width>201</width>
+                        <height>51</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;录入报刊&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+            </widget>
+            <widget class="QLineEdit" name="lineEdit_price">
+                <property name="geometry">
+                    <rect>
+                        <x>550</x>
+                        <y>170</y>
+                        <width>151</width>
+                        <height>31</height>
+                    </rect>
+                </property>
+                <property name="placeholderText">
+                    <string>input price</string>
+                </property>
+            </widget>
+            <widget class="QLineEdit" name="lineEdit_category">
+                <property name="geometry">
+                    <rect>
+                        <x>550</x>
+                        <y>210</y>
+                        <width>151</width>
+                        <height>31</height>
+                    </rect>
+                </property>
+                <property name="placeholderText">
+                    <string>input categoty</string>
+                </property>
+            </widget>
+            <zorder>pushButton_back</zorder>
+            <zorder>pushButton_fresh</zorder>
+            <zorder>pushButton_up</zorder>
+            <zorder>lineEdit_newsid</zorder>
+            <zorder>pushButton_logout</zorder>
+            <zorder>pushButton_down</zorder>
+            <zorder>pushButton_update</zorder>
+            <zorder>tableWidget</zorder>
+            <zorder>lineEdit_newsname</zorder>
+            <zorder>pushButton_insert</zorder>
+            <zorder>label</zorder>
+            <zorder>lineEdit_price</zorder>
+            <zorder>lineEdit_category</zorder>
+            <zorder>comboBox_style</zorder>
+        </widget>
+        <widget class="QMenuBar" name="menubar">
+            <property name="geometry">
+                <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>800</width>
+                    <height>22</height>
+                </rect>
+            </property>
+        </widget>
+        <widget class="QStatusBar" name="statusbar"/>
+    </widget>
+    <resources>
+        <include location="../resource/resource.qrc"/>
+    </resources>
+    <connections/>
+</ui>

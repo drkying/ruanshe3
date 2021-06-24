@@ -70,7 +70,14 @@ class Ui_MainWindow(object):
         self.label_2.setGeometry(QtCore.QRect(230, 220, 131, 71))
         self.label_2.setObjectName("label_2")
         self.label_welcome = QtWidgets.QLabel(self.centralwidget)
-        self.label_welcome.setGeometry(QtCore.QRect(490, 60, 151, 41))
+        self.label_welcome.setGeometry(QtCore.QRect(490, 60, 151, 71))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_welcome.sizePolicy().hasHeightForWidth())
+        self.label_welcome.setSizePolicy(sizePolicy)
+        self.label_welcome.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop)
+        self.label_welcome.setWordWrap(True)
         self.label_welcome.setObjectName("label_welcome")
         self.pushButton_userinfo = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_userinfo.setGeometry(QtCore.QRect(690, 120, 31, 31))
@@ -108,14 +115,13 @@ class Ui_MainWindow(object):
         self.comboBox_user.setItemText(1, _translate("MainWindow", "订阅管理"))
         self.comboBox_user.setItemText(2, _translate("MainWindow", "金额结算"))
         self.comboBox_user.setItemText(3, _translate("MainWindow", "地址管理"))
-        self.label.setText(_translate("MainWindow",
-                                      "<html><head/><body><p align=\"center\"><span style=\" font-size:36pt;\">Menu</span></p></body></html>"))
+        self.label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\"\n"
+                                                    "                        font-size:36pt;\">Menu</span></p></body></html>\n"
+                                                    "                    "))
         self.pushButton_logout.setText(_translate("MainWindow", "logout"))
         self.label_2.setText(_translate("MainWindow",
                                         "<html><head/><body><p><span style=\" font-size:18pt;\">请选择功能</span></p></body></html>"))
         self.label_welcome.setText(_translate("MainWindow",
                                               "<html><head/><body><p><span style=\" font-size:24pt;\">TextLabel</span></p></body></html>"))
         self.pushButton_userinfo.setToolTip(_translate("MainWindow", "个人信息管理"))
-
-
 import resource_rc

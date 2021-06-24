@@ -1,6 +1,7 @@
 from Model.Login import Login
 from Model.Menu import Menu
 from Model.Register import Register
+from Model.RootInsert import RootInsert
 
 
 class Controller:
@@ -38,9 +39,17 @@ class Controller:
         #
         # self.Menu.switch_root_search.connect(self.ShowRootSearch)
         # self.Menu.switch_root_search.connect(self.Menu.close)
-        # self.Menu.switch_root_insert.connect(self.ShowRootInsert)
-        # self.Menu.switch_root_insert.connect(self.Menu.close)
+        self.Menu.switch_root_insert.connect(self.ShowRootInsert)
+        self.Menu.switch_root_insert.connect(self.Menu.close)
         # self.Menu.switch_root_statistics.connect(self.ShowRootStatistic)
         # self.Menu.switch_root_statistics.connect(self.Menu.close)
         # self.Menu.switch_root_backup.connect(self.ShowRootBackup)
         # self.Menu.switch_root_backup.connect(self.Menu.close)
+
+    def ShowRootInsert(self):
+        self.RootInsert = RootInsert()
+        self.RootInsert.show()
+        self.RootInsert.switch_back.connect(self.ShowMenu)
+        self.RootInsert.switch_back.connect(self.RootInsert.close)
+        self.RootInsert.switch_logout.connect(self.ShowLoginWindow)
+        self.RootInsert.switch_logout.connect(self.RootInsert.close)
