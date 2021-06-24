@@ -1,3 +1,4 @@
+from Model.BackupRecover import BackRecover
 from Model.Login import Login
 from Model.Menu import Menu
 from Model.Register import Register
@@ -43,8 +44,8 @@ class Controller:
         self.Menu.switch_root_insert.connect(self.Menu.close)
         # self.Menu.switch_root_statistics.connect(self.ShowRootStatistic)
         # self.Menu.switch_root_statistics.connect(self.Menu.close)
-        # self.Menu.switch_root_backup.connect(self.ShowRootBackup)
-        # self.Menu.switch_root_backup.connect(self.Menu.close)
+        self.Menu.switch_root_backup.connect(self.ShowRootBackup)
+        self.Menu.switch_root_backup.connect(self.Menu.close)
 
     def ShowRootInsert(self):
         self.RootInsert = RootInsert()
@@ -53,3 +54,12 @@ class Controller:
         self.RootInsert.switch_back.connect(self.RootInsert.close)
         self.RootInsert.switch_logout.connect(self.ShowLoginWindow)
         self.RootInsert.switch_logout.connect(self.RootInsert.close)
+
+    def ShowRootBackup(self):
+        self.RootBackup = BackRecover()
+        self.RootBackup.show()
+
+        self.RootBackup.switch_back.connect(self.ShowMenu)
+        self.RootBackup.switch_back.connect(self.RootBackup.close)
+        self.RootBackup.switch_logout.connect(self.ShowLoginWindow)
+        self.RootBackup.switch_logout.connect(self.RootBackup.close)
