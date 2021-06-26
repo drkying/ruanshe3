@@ -36,33 +36,37 @@ class BackRecover(QtWidgets.QMainWindow, BackupRecoverWindow.Ui_MainWindow):
     def show_backup(self):
         filename = list()
         back_time = list()
-        os.chdir("D:/myBlog/ruanshe3/backup")
-        for root, dirs, files in os.walk(os.getcwd()):
-            for file in files:
-                if file.endswith(".sql"):
-                    fname = file.split('.')[0]
-                    time_str = fname.split('-')[1]
-                    curr_time = datetime.datetime.strptime(time_str, '%Y%m%d%H%M%S')
-                    time_str = datetime.datetime.strftime(curr_time, '%Y-%m-%d %H:%M:%S')
-                    filename.append(fname.split('-')[0])
-                    back_time.append(time_str)
-        row = len(filename)
-        if row != 0:
-            self.tableWidget.setRowCount(row)
-            for i in range(row):
-                temp_data = filename[i]
-                data = QTableWidgetItem(str(temp_data))
-                self.tableWidget.setItem(i, 0, data)
-                temp_data = back_time[i]
-                data = QTableWidgetItem(str(temp_data))
-                self.tableWidget.setItem(i, 1, data)
-            self.tableWidget.sortItems(1, QtCore.Qt.DescendingOrder)
+        path = os.getcwd() + '/backup'
+        if os.path.exists(path):
+            for root, dirs, files in os.walk(os.getcwd()):
+                for file in files:
+                    if file.endswith(".sql"):
+                        fname = file.split('.')[0]
+                        time_str = fname.split('-')[1]
+                        curr_time = datetime.datetime.strptime(time_str, '%Y%m%d%H%M%S')
+                        time_str = datetime.datetime.strftime(curr_time, '%Y-%m-%d %H:%M:%S')
+                        filename.append(fname.split('-')[0])
+                        back_time.append(time_str)
+            row = len(filename)
+            if row != 0:
+                self.tableWidget.setRowCount(row)
+                for i in range(row):
+                    temp_data = filename[i]
+                    data = QTableWidgetItem(str(temp_data))
+                    self.tableWidget.setItem(i, 0, data)
+                    temp_data = back_time[i]
+                    data = QTableWidgetItem(str(temp_data))
+                    self.tableWidget.setItem(i, 1, data)
+                self.tableWidget.sortItems(1, QtCore.Qt.DescendingOrder)
+            else:
+                self.tableWidget.setRowCount(1)
+                data = QTableWidgetItem("暂无备份")
+                self.tableWidget.setItem(1, 0, data)
+                self.tableWidget.setItem(1, 1, data)
+                WarningBox(self, "默认路径backup下未找到备份文件")
         else:
-            self.tableWidget.setRowCount(1)
-            data = QTableWidgetItem("暂无备份")
-            self.tableWidget.setItem(1, 0, data)
-            self.tableWidget.setItem(1, 1, data)
-            WarningBox(self, "默认路径backup下未找到备份文件")
+            os.mkdir(path)
+            self.show_backup()
 
     def backup(self):
         curr_time = datetime.datetime.now()

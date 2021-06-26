@@ -3,6 +3,7 @@ from Model.Login import Login
 from Model.Menu import Menu
 from Model.Register import Register
 from Model.RootInsert import RootInsert
+from Model.UserSubscribe import UserSubscribe
 
 
 class Controller:
@@ -29,8 +30,8 @@ class Controller:
         self.Menu.switch_logout.connect(self.ShowLoginWindow)
         self.Menu.switch_logout.connect(self.Menu.close)
         # self.Menu.switch_user_info.connect(self.ShowUserInfo)
-        # self.Menu.switch_user_subscribe.connect(self.ShowUserSubscribe)
-        # self.Menu.switch_user_subscribe.connect(self.Menu.close)
+        self.Menu.switch_user_subscribe.connect(self.ShowUserSubscribe)
+        self.Menu.switch_user_subscribe.connect(self.Menu.close)
         # self.Menu.switch_user_manage.connect(self.ShowUserManage)
         # self.Menu.switch_user_manage.connect(self.Menu.close)
         # self.Menu.switch_user_settle.connect(self.ShowUserSettle)
@@ -63,3 +64,14 @@ class Controller:
         self.RootBackup.switch_back.connect(self.RootBackup.close)
         self.RootBackup.switch_logout.connect(self.ShowLoginWindow)
         self.RootBackup.switch_logout.connect(self.RootBackup.close)
+
+
+    def ShowUserSubscribe(self):
+        self.UserSubscribe = UserSubscribe()
+        self.UserSubscribe.show()
+        self.UserSubscribe.switch_back.connect(self.ShowMenu)
+        self.UserSubscribe.switch_back.connect(self.UserSubscribe.close)
+        # 订阅时增加地址暂未实现
+        # self.UserSubscribe.switch_add_addr.connect(self.ShowUserAddAddr)
+        self.UserSubscribe.switch_logout.connect(self.ShowLoginWindow)
+        self.UserSubscribe.switch_logout.connect(self.UserSubscribe.close)
