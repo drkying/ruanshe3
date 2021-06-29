@@ -348,6 +348,16 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>lineEdit_name</tabstop>
+  <tabstop>comboBox_sex</tabstop>
+  <tabstop>comboBox_dept</tabstop>
+  <tabstop>pushButton_changeinfo</tabstop>
+  <tabstop>lineEdit_oldpasswd</tabstop>
+  <tabstop>lineEdit_newpasswd</tabstop>
+  <tabstop>lineEdit_confirm</tabstop>
+  <tabstop>pushButton_changepasswd</tabstop>
+ </tabstops>
  <resources>
   <include location="../../db/resource/resource.qrc"/>
  </resources>

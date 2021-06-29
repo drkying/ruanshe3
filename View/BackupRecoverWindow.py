@@ -69,6 +69,10 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        MainWindow.setTabOrder(self.tableWidget, self.pushButton_backup)
+        MainWindow.setTabOrder(self.pushButton_backup, self.pushButton_recover)
+        MainWindow.setTabOrder(self.pushButton_recover, self.pushButton_back)
+        MainWindow.setTabOrder(self.pushButton_back, self.pushButton_logout)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -82,6 +86,4 @@ class Ui_MainWindow(object):
         self.pushButton_backup.setShortcut(_translate("MainWindow", "Return"))
         self.pushButton_recover.setText(_translate("MainWindow", "恢复备份"))
         self.pushButton_logout.setText(_translate("MainWindow", "Logout"))
-
-
 import resource_rc

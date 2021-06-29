@@ -130,6 +130,14 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        MainWindow.setTabOrder(self.tableWidget_subscribe, self.tableWidget_newspaper)
+        MainWindow.setTabOrder(self.tableWidget_newspaper, self.comboBox_newsid)
+        MainWindow.setTabOrder(self.comboBox_newsid, self.spinBox_count)
+        MainWindow.setTabOrder(self.spinBox_count, self.comboBox_addr)
+        MainWindow.setTabOrder(self.comboBox_addr, self.pushButton_subscribe)
+        MainWindow.setTabOrder(self.pushButton_subscribe, self.pushButton_fresh)
+        MainWindow.setTabOrder(self.pushButton_fresh, self.pushButton_back)
+        MainWindow.setTabOrder(self.pushButton_back, self.pushButton_logout)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

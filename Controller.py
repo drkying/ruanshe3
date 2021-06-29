@@ -3,6 +3,8 @@ from Model.Login import Login
 from Model.Menu import Menu
 from Model.Register import Register
 from Model.RootInsert import RootInsert
+from Model.UserAddAddr import UserAddAddr
+from Model.UserAddr import UserAddr
 from Model.UserInfo import UserInfo
 from Model.UserSubscribe import UserSubscribe
 
@@ -37,8 +39,8 @@ class Controller:
         # self.Menu.switch_user_manage.connect(self.Menu.close)
         # self.Menu.switch_user_settle.connect(self.ShowUserSettle)
         # self.Menu.switch_user_settle.connect(self.Menu.close)
-        # self.Menu.switch_user_addr.connect(self.ShowUserAddr)
-        # self.Menu.switch_user_addr.connect(self.Menu.close)
+        self.Menu.switch_user_addr.connect(self.ShowUserAddr)
+        self.Menu.switch_user_addr.connect(self.Menu.close)
         #
         # self.Menu.switch_root_search.connect(self.ShowRootSearch)
         # self.Menu.switch_root_search.connect(self.Menu.close)
@@ -66,14 +68,12 @@ class Controller:
         self.RootBackup.switch_logout.connect(self.ShowLoginWindow)
         self.RootBackup.switch_logout.connect(self.RootBackup.close)
 
-
     def ShowUserSubscribe(self):
         self.UserSubscribe = UserSubscribe()
         self.UserSubscribe.show()
         self.UserSubscribe.switch_back.connect(self.ShowMenu)
         self.UserSubscribe.switch_back.connect(self.UserSubscribe.close)
-        # 订阅时增加地址暂未实现
-        # self.UserSubscribe.switch_add_addr.connect(self.ShowUserAddAddr)
+        self.UserSubscribe.switch_add_addr.connect(self.ShowUserAddAddr)
         self.UserSubscribe.switch_logout.connect(self.ShowLoginWindow)
         self.UserSubscribe.switch_logout.connect(self.UserSubscribe.close)
 
@@ -82,3 +82,23 @@ class Controller:
         self.UserInfo.show()
         self.UserInfo.switch_logout.connect(self.ShowLoginWindow)
         self.UserInfo.switch_logout.connect(self.UserInfo.close)
+
+    def ShowUserAddr(self):
+        self.UserAddr = UserAddr()
+        self.UserAddr.show()
+
+        self.UserAddr.switch_add_addr.connect(self.ShowUserAddAddr)
+        self.UserAddr.switch_back.connect(self.ShowMenu)
+        self.UserAddr.switch_back.connect(self.UserAddr.close)
+        self.UserAddr.switch_logout.connect(self.ShowLoginWindow)
+        self.UserAddr.switch_logout.connect(self.UserAddr.close)
+
+    def ShowUserAddAddr(self, pre):
+        self.UserAddAddr = UserAddAddr(pre)
+        self.UserAddAddr.show()
+        if pre == 1:
+            self.UserAddAddr.switch_to_manage.connect(self.UserAddAddr.close)
+            self.UserAddAddr.switch_to_manage.connect(self.UserAddr.show_addr)
+        if pre == 2:
+            self.UserAddAddr.switch_to_subscribe.connect(self.UserAddAddr.close)
+            self.UserAddAddr.switch_to_subscribe.connect(self.UserSubscribe.show_address)

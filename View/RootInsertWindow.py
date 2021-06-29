@@ -97,9 +97,6 @@ class Ui_MainWindow(object):
         self.lineEdit_price = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEdit_price.setGeometry(QtCore.QRect(550, 170, 151, 31))
         self.lineEdit_price.setObjectName("lineEdit_price")
-        self.lineEdit_category = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_category.setGeometry(QtCore.QRect(550, 210, 151, 31))
-        self.lineEdit_category.setObjectName("lineEdit_category")
         self.pushButton_back.raise_()
         self.pushButton_fresh.raise_()
         self.pushButton_up.raise_()
@@ -112,7 +109,6 @@ class Ui_MainWindow(object):
         self.pushButton_insert.raise_()
         self.label.raise_()
         self.lineEdit_price.raise_()
-        self.lineEdit_category.raise_()
         self.comboBox_style.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
@@ -125,6 +121,17 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        MainWindow.setTabOrder(self.lineEdit_newsid, self.lineEdit_newsname)
+        MainWindow.setTabOrder(self.lineEdit_newsname, self.lineEdit_price)
+        MainWindow.setTabOrder(self.lineEdit_price, self.comboBox_style)
+        MainWindow.setTabOrder(self.comboBox_style, self.pushButton_update)
+        MainWindow.setTabOrder(self.pushButton_update, self.pushButton_up)
+        MainWindow.setTabOrder(self.pushButton_up, self.pushButton_down)
+        MainWindow.setTabOrder(self.pushButton_down, self.pushButton_insert)
+        MainWindow.setTabOrder(self.pushButton_insert, self.pushButton_fresh)
+        MainWindow.setTabOrder(self.pushButton_fresh, self.pushButton_back)
+        MainWindow.setTabOrder(self.pushButton_back, self.pushButton_logout)
+        MainWindow.setTabOrder(self.pushButton_logout, self.tableWidget)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -153,10 +160,6 @@ class Ui_MainWindow(object):
         self.comboBox_style.setItemText(1, _translate("MainWindow", "新闻"))
         self.comboBox_style.setItemText(2, _translate("MainWindow", "学术"))
         self.comboBox_style.setItemText(3, _translate("MainWindow", "娱乐"))
-        self.label.setText(_translate("MainWindow",
-                                      "<html><head/><body><p><span style=\" font-size:36pt;\">录入报刊</span></p></body></html>"))
+        self.label.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:36pt;\">录入报刊</span></p></body></html>"))
         self.lineEdit_price.setPlaceholderText(_translate("MainWindow", "input price"))
-        self.lineEdit_category.setPlaceholderText(_translate("MainWindow", "input categoty"))
-
-
 import resource_rc

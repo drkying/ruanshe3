@@ -57,7 +57,7 @@ class Ui_MainWindow(object):
         icon8.addPixmap(QtGui.QPixmap(":/icon/dizhiguanli.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         self.comboBox_user.addItem(icon8, "")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(330, 20, 118, 57))
+        self.label.setGeometry(QtCore.QRect(330, 20, 191, 61))
         self.label.setObjectName("label")
         self.pushButton_logout = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_logout.setGeometry(QtCore.QRect(610, 160, 112, 32))
@@ -70,13 +70,13 @@ class Ui_MainWindow(object):
         self.label_2.setGeometry(QtCore.QRect(230, 220, 131, 71))
         self.label_2.setObjectName("label_2")
         self.label_welcome = QtWidgets.QLabel(self.centralwidget)
-        self.label_welcome.setGeometry(QtCore.QRect(490, 60, 151, 71))
+        self.label_welcome.setGeometry(QtCore.QRect(470, 80, 151, 71))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_welcome.sizePolicy().hasHeightForWidth())
         self.label_welcome.setSizePolicy(sizePolicy)
-        self.label_welcome.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop)
+        self.label_welcome.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.label_welcome.setWordWrap(True)
         self.label_welcome.setObjectName("label_welcome")
         self.pushButton_userinfo = QtWidgets.QPushButton(self.centralwidget)
@@ -101,6 +101,10 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        MainWindow.setTabOrder(self.pushButton_logout, self.comboBox_root)
+        MainWindow.setTabOrder(self.comboBox_root, self.comboBox_user)
+        MainWindow.setTabOrder(self.comboBox_user, self.pushButton_next)
+        MainWindow.setTabOrder(self.pushButton_next, self.pushButton_userinfo)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -116,12 +120,10 @@ class Ui_MainWindow(object):
         self.comboBox_user.setItemText(2, _translate("MainWindow", "金额结算"))
         self.comboBox_user.setItemText(3, _translate("MainWindow", "地址管理"))
         self.label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\"\n"
-                                                    "                        font-size:36pt;\">Menu</span></p></body></html>\n"
-                                                    "                    "))
+"                        font-size:36pt;\">菜单选项</span></p></body></html>\n"
+"                    "))
         self.pushButton_logout.setText(_translate("MainWindow", "logout"))
-        self.label_2.setText(_translate("MainWindow",
-                                        "<html><head/><body><p><span style=\" font-size:18pt;\">请选择功能</span></p></body></html>"))
-        self.label_welcome.setText(_translate("MainWindow",
-                                              "<html><head/><body><p><span style=\" font-size:24pt;\">TextLabel</span></p></body></html>"))
+        self.label_2.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:18pt;\">请选择功能</span></p></body></html>"))
+        self.label_welcome.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:24pt;\">TextLabel</span></p></body></html>"))
         self.pushButton_userinfo.setToolTip(_translate("MainWindow", "个人信息管理"))
 import resource_rc

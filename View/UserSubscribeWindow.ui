@@ -270,6 +270,17 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>tableWidget_subscribe</tabstop>
+  <tabstop>tableWidget_newspaper</tabstop>
+  <tabstop>comboBox_newsid</tabstop>
+  <tabstop>spinBox_count</tabstop>
+  <tabstop>comboBox_addr</tabstop>
+  <tabstop>pushButton_subscribe</tabstop>
+  <tabstop>pushButton_fresh</tabstop>
+  <tabstop>pushButton_back</tabstop>
+  <tabstop>pushButton_logout</tabstop>
+ </tabstops>
  <resources>
   <include location="../resource/resource.qrc"/>
  </resources>

@@ -1,274 +1,277 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
-    <class>MainWindow</class>
-    <widget class="QMainWindow" name="MainWindow">
-        <property name="geometry">
-            <rect>
-                <x>0</x>
-                <y>0</y>
-                <width>800</width>
-                <height>600</height>
-            </rect>
-        </property>
-        <property name="windowTitle">
-            <string>MainWindow</string>
-        </property>
-        <widget class="QWidget" name="centralwidget">
-            <widget class="QComboBox" name="comboBox_root">
-                <property name="geometry">
-                    <rect>
-                        <x>380</x>
-                        <y>240</y>
-                        <width>121</width>
-                        <height>31</height>
-                    </rect>
-                </property>
-                <property name="focusPolicy">
-                    <enum>Qt::StrongFocus</enum>
-                </property>
-                <item>
-                    <property name="text">
-                        <string>报刊管理</string>
-                    </property>
-                    <property name="icon">
-                        <iconset>
-                            <normalon>:/icon/insert.png</normalon>
-                        </iconset>
-                    </property>
-                </item>
-                <item>
-                    <property name="text">
-                        <string>订阅查询</string>
-                    </property>
-                    <property name="icon">
-                        <iconset>
-                            <normalon>:/icon/search.png</normalon>
-                        </iconset>
-                    </property>
-                </item>
-                <item>
-                    <property name="text">
-                        <string>订阅统计</string>
-                    </property>
-                    <property name="icon">
-                        <iconset>
-                            <normalon>:/icon/tongji-2.png</normalon>
-                        </iconset>
-                    </property>
-                </item>
-                <item>
-                    <property name="text">
-                        <string>系统维护</string>
-                    </property>
-                    <property name="icon">
-                        <iconset>
-                            <normalon>:/icon/weihu.png</normalon>
-                        </iconset>
-                    </property>
-                </item>
-            </widget>
-            <widget class="QPushButton" name="pushButton_next">
-                <property name="geometry">
-                    <rect>
-                        <x>610</x>
-                        <y>430</y>
-                        <width>112</width>
-                        <height>32</height>
-                    </rect>
-                </property>
-                <property name="focusPolicy">
-                    <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="text">
-                    <string>next</string>
-                </property>
-                <property name="icon">
-                    <iconset resource="../../db/resource/resource.qrc">
-                        <normaloff>:/icon/next.png</normaloff>:/icon/next.png
-                    </iconset>
-                </property>
-                <property name="shortcut">
-                    <string>Return</string>
-                </property>
-            </widget>
-            <widget class="QComboBox" name="comboBox_user">
-                <property name="geometry">
-                    <rect>
-                        <x>380</x>
-                        <y>240</y>
-                        <width>121</width>
-                        <height>31</height>
-                    </rect>
-                </property>
-                <property name="focusPolicy">
-                    <enum>Qt::StrongFocus</enum>
-                </property>
-                <item>
-                    <property name="text">
-                        <string>订阅报刊</string>
-                    </property>
-                    <property name="icon">
-                        <iconset resource="../../db/resource/resource.qrc">
-                            <normaloff>:/icon/subscribe.png</normaloff>:/icon/subscribe.png
-                        </iconset>
-                    </property>
-                </item>
-                <item>
-                    <property name="text">
-                        <string>订阅管理</string>
-                    </property>
-                    <property name="icon">
-                        <iconset resource="../../db/resource/resource.qrc">
-                            <normaloff>:/icon/guanli.png</normaloff>:/icon/guanli.png
-                        </iconset>
-                    </property>
-                </item>
-                <item>
-                    <property name="text">
-                        <string>金额结算</string>
-                    </property>
-                    <property name="icon">
-                        <iconset resource="../../db/resource/resource.qrc">
-                            <normaloff>:/icon/settle.png</normaloff>:/icon/settle.png
-                        </iconset>
-                    </property>
-                </item>
-                <item>
-                    <property name="text">
-                        <string>地址管理</string>
-                    </property>
-                    <property name="icon">
-                        <iconset>
-                            <normalon>:/icon/dizhiguanli.png</normalon>
-                        </iconset>
-                    </property>
-                </item>
-            </widget>
-            <widget class="QLabel" name="label">
-                <property name="geometry">
-                    <rect>
-                        <x>330</x>
-                        <y>20</y>
-                        <width>118</width>
-                        <height>57</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot;
-                        font-size:36pt;&quot;&gt;Menu&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QComboBox" name="comboBox_root">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>240</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::StrongFocus</enum>
+    </property>
+    <item>
+     <property name="text">
+      <string>报刊管理</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normalon>:/icon/insert.png</normalon>
+      </iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>订阅查询</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normalon>:/icon/search.png</normalon>
+      </iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>订阅统计</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normalon>:/icon/tongji-2.png</normalon>
+      </iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>系统维护</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normalon>:/icon/weihu.png</normalon>
+      </iconset>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="pushButton_next">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>430</y>
+      <width>112</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::StrongFocus</enum>
+    </property>
+    <property name="text">
+     <string>next</string>
+    </property>
+    <property name="icon">
+     <iconset resource="../../db/resource/resource.qrc">
+      <normaloff>:/icon/next.png</normaloff>:/icon/next.png</iconset>
+    </property>
+    <property name="shortcut">
+     <string>Return</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_user">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>240</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::StrongFocus</enum>
+    </property>
+    <item>
+     <property name="text">
+      <string>订阅报刊</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../db/resource/resource.qrc">
+       <normaloff>:/icon/subscribe.png</normaloff>:/icon/subscribe.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>订阅管理</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../db/resource/resource.qrc">
+       <normaloff>:/icon/guanli.png</normaloff>:/icon/guanli.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>金额结算</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../db/resource/resource.qrc">
+       <normaloff>:/icon/settle.png</normaloff>:/icon/settle.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>地址管理</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normalon>:/icon/dizhiguanli.png</normalon>
+      </iconset>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>20</y>
+      <width>191</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot;
+                        font-size:36pt;&quot;&gt;菜单选项&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                     </string>
-                </property>
-            </widget>
-            <widget class="QPushButton" name="pushButton_logout">
-                <property name="geometry">
-                    <rect>
-                        <x>610</x>
-                        <y>160</y>
-                        <width>112</width>
-                        <height>32</height>
-                    </rect>
-                </property>
-                <property name="focusPolicy">
-                    <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="text">
-                    <string>logout</string>
-                </property>
-                <property name="icon">
-                    <iconset>
-                        <normalon>:/icon/log-out.png</normalon>
-                    </iconset>
-                </property>
-            </widget>
-            <widget class="QLabel" name="label_2">
-                <property name="geometry">
-                    <rect>
-                        <x>230</x>
-                        <y>220</y>
-                        <width>131</width>
-                        <height>71</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;请选择功能&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-            </widget>
-            <widget class="QLabel" name="label_welcome">
-                <property name="geometry">
-                    <rect>
-                        <x>490</x>
-                        <y>60</y>
-                        <width>151</width>
-                        <height>71</height>
-                    </rect>
-                </property>
-                <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                    </sizepolicy>
-                </property>
-                <property name="text">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;TextLabel&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="alignment">
-                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-                </property>
-                <property name="wordWrap">
-                    <bool>true</bool>
-                </property>
-            </widget>
-            <widget class="QPushButton" name="pushButton_userinfo">
-                <property name="geometry">
-                    <rect>
-                        <x>690</x>
-                        <y>120</y>
-                        <width>31</width>
-                        <height>31</height>
-                    </rect>
-                </property>
-                <property name="focusPolicy">
-                    <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="toolTip">
-                    <string>个人信息管理</string>
-                </property>
-                <property name="styleSheet">
-                    <string notr="true"/>
-                </property>
-                <property name="text">
-                    <string/>
-                </property>
-                <property name="icon">
-                    <iconset>
-                        <normalon>:/icon/selfinfo.png</normalon>
-                    </iconset>
-                </property>
-                <property name="iconSize">
-                    <size>
-                        <width>32</width>
-                        <height>32</height>
-                    </size>
-                </property>
-                <property name="flat">
-                    <bool>true</bool>
-                </property>
-            </widget>
-        </widget>
-        <widget class="QMenuBar" name="menubar">
-            <property name="geometry">
-                <rect>
-                    <x>0</x>
-                    <y>0</y>
-                    <width>800</width>
-                    <height>22</height>
-                </rect>
-            </property>
-        </widget>
-        <widget class="QStatusBar" name="statusbar"/>
-    </widget>
-    <resources>
-        <include location="../../db/resource/resource.qrc"/>
-    </resources>
-    <connections/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_logout">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>160</y>
+      <width>112</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::StrongFocus</enum>
+    </property>
+    <property name="text">
+     <string>logout</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normalon>:/icon/log-out.png</normalon>
+     </iconset>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>220</y>
+      <width>131</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;请选择功能&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_welcome">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>80</y>
+      <width>151</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;TextLabel&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_userinfo">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>120</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::StrongFocus</enum>
+    </property>
+    <property name="toolTip">
+     <string>个人信息管理</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normalon>:/icon/selfinfo.png</normalon>
+     </iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <tabstops>
+  <tabstop>pushButton_logout</tabstop>
+  <tabstop>comboBox_root</tabstop>
+  <tabstop>comboBox_user</tabstop>
+  <tabstop>pushButton_next</tabstop>
+  <tabstop>pushButton_userinfo</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../../db/resource/resource.qrc"/>
+ </resources>
+ <connections/>
 </ui>

@@ -36,17 +36,21 @@ class BackRecover(QtWidgets.QMainWindow, BackupRecoverWindow.Ui_MainWindow):
     def show_backup(self):
         filename = list()
         back_time = list()
-        path = os.getcwd() + '/backup'
+        path = os.getcwd() + r'\backup'
         if os.path.exists(path):
-            for root, dirs, files in os.walk(os.getcwd()):
+            for root, dirs, files in os.walk(path):
                 for file in files:
-                    if file.endswith(".sql"):
+                    if file.endswith(".sql") and file.find('-') >= 0:
                         fname = file.split('.')[0]
                         time_str = fname.split('-')[1]
                         curr_time = datetime.datetime.strptime(time_str, '%Y%m%d%H%M%S')
                         time_str = datetime.datetime.strftime(curr_time, '%Y-%m-%d %H:%M:%S')
                         filename.append(fname.split('-')[0])
                         back_time.append(time_str)
+                    else:
+                        WarningBox(self, "backup目录下存在不合法的文件名,请返回！")
+                        self.switch_back.emit()
+                        return
             row = len(filename)
             if row != 0:
                 self.tableWidget.setRowCount(row)

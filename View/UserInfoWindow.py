@@ -119,6 +119,13 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        MainWindow.setTabOrder(self.lineEdit_name, self.comboBox_sex)
+        MainWindow.setTabOrder(self.comboBox_sex, self.comboBox_dept)
+        MainWindow.setTabOrder(self.comboBox_dept, self.pushButton_changeinfo)
+        MainWindow.setTabOrder(self.pushButton_changeinfo, self.lineEdit_oldpasswd)
+        MainWindow.setTabOrder(self.lineEdit_oldpasswd, self.lineEdit_newpasswd)
+        MainWindow.setTabOrder(self.lineEdit_newpasswd, self.lineEdit_confirm)
+        MainWindow.setTabOrder(self.lineEdit_confirm, self.pushButton_changepasswd)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
