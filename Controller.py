@@ -3,6 +3,7 @@ from Model.Login import Login
 from Model.Menu import Menu
 from Model.Register import Register
 from Model.RootInsert import RootInsert
+from Model.UserInfo import UserInfo
 from Model.UserSubscribe import UserSubscribe
 
 
@@ -29,7 +30,7 @@ class Controller:
         self.Menu.show()
         self.Menu.switch_logout.connect(self.ShowLoginWindow)
         self.Menu.switch_logout.connect(self.Menu.close)
-        # self.Menu.switch_user_info.connect(self.ShowUserInfo)
+        self.Menu.switch_user_info.connect(self.ShowUserInfo)
         self.Menu.switch_user_subscribe.connect(self.ShowUserSubscribe)
         self.Menu.switch_user_subscribe.connect(self.Menu.close)
         # self.Menu.switch_user_manage.connect(self.ShowUserManage)
@@ -75,3 +76,9 @@ class Controller:
         # self.UserSubscribe.switch_add_addr.connect(self.ShowUserAddAddr)
         self.UserSubscribe.switch_logout.connect(self.ShowLoginWindow)
         self.UserSubscribe.switch_logout.connect(self.UserSubscribe.close)
+
+    def ShowUserInfo(self):
+        self.UserInfo = UserInfo()
+        self.UserInfo.show()
+        self.UserInfo.switch_logout.connect(self.ShowLoginWindow)
+        self.UserInfo.switch_logout.connect(self.UserInfo.close)
