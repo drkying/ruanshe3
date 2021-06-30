@@ -3,9 +3,14 @@ from Model.Login import Login
 from Model.Menu import Menu
 from Model.Register import Register
 from Model.RootInsert import RootInsert
+from Model.RootSearch import RootSearch
+from Model.RootStatistic import RootStatistic
+from Model.Statistic import Statistic
 from Model.UserAddAddr import UserAddAddr
 from Model.UserAddr import UserAddr
 from Model.UserInfo import UserInfo
+from Model.UserManage import UserManager
+from Model.UserSettle import UserSettle
 from Model.UserSubscribe import UserSubscribe
 
 
@@ -35,19 +40,19 @@ class Controller:
         self.Menu.switch_user_info.connect(self.ShowUserInfo)
         self.Menu.switch_user_subscribe.connect(self.ShowUserSubscribe)
         self.Menu.switch_user_subscribe.connect(self.Menu.close)
-        # self.Menu.switch_user_manage.connect(self.ShowUserManage)
-        # self.Menu.switch_user_manage.connect(self.Menu.close)
-        # self.Menu.switch_user_settle.connect(self.ShowUserSettle)
-        # self.Menu.switch_user_settle.connect(self.Menu.close)
+        self.Menu.switch_user_manage.connect(self.ShowUserManage)
+        self.Menu.switch_user_manage.connect(self.Menu.close)
+        self.Menu.switch_user_settle.connect(self.ShowUserSettle)
+        self.Menu.switch_user_settle.connect(self.Menu.close)
         self.Menu.switch_user_addr.connect(self.ShowUserAddr)
         self.Menu.switch_user_addr.connect(self.Menu.close)
-        #
-        # self.Menu.switch_root_search.connect(self.ShowRootSearch)
-        # self.Menu.switch_root_search.connect(self.Menu.close)
+
+        self.Menu.switch_root_search.connect(self.ShowRootSearch)
+        self.Menu.switch_root_search.connect(self.Menu.close)
         self.Menu.switch_root_insert.connect(self.ShowRootInsert)
         self.Menu.switch_root_insert.connect(self.Menu.close)
-        # self.Menu.switch_root_statistics.connect(self.ShowRootStatistic)
-        # self.Menu.switch_root_statistics.connect(self.Menu.close)
+        self.Menu.switch_root_statistics.connect(self.ShowRootStatistic)
+        self.Menu.switch_root_statistics.connect(self.Menu.close)
         self.Menu.switch_root_backup.connect(self.ShowRootBackup)
         self.Menu.switch_root_backup.connect(self.Menu.close)
 
@@ -102,3 +107,41 @@ class Controller:
         if pre == 2:
             self.UserAddAddr.switch_to_subscribe.connect(self.UserAddAddr.close)
             self.UserAddAddr.switch_to_subscribe.connect(self.UserSubscribe.show_address)
+
+    def ShowUserManage(self):
+        self.UserManage = UserManager()
+        self.UserManage.show()
+        self.UserManage.switch_back.connect(self.ShowMenu)
+        self.UserManage.switch_back.connect(self.UserManage.close)
+        self.UserManage.switch_logout.connect(self.ShowLoginWindow)
+        self.UserManage.switch_logout.connect(self.UserManage.close)
+
+    def ShowUserSettle(self):
+        self.UserSettle = UserSettle()
+        self.UserSettle.show()
+        self.UserSettle.switch_back.connect(self.ShowMenu)
+        self.UserSettle.switch_back.connect(self.UserSettle.close)
+        self.UserSettle.switch_logout.connect(self.ShowLoginWindow)
+        self.UserSettle.switch_logout.connect(self.UserSettle.close)
+
+    def ShowRootSearch(self):
+        self.RootSearch = RootSearch()
+        self.RootSearch.show()
+        self.RootSearch.switch_back.connect(self.ShowMenu)
+        self.RootSearch.switch_back.connect(self.RootSearch.close)
+        self.RootSearch.switch_logout.connect(self.ShowLoginWindow)
+        self.RootSearch.switch_logout.connect(self.RootSearch.close)
+
+    def ShowRootStatistic(self):
+        self.RootStatistic = RootStatistic()
+        self.RootStatistic.show()
+
+        self.RootStatistic.switch_data.connect(self.ShowStatisticGraph)
+        self.RootStatistic.switch_back.connect(self.ShowMenu)
+        self.RootStatistic.switch_back.connect(self.RootStatistic.close)
+        self.RootStatistic.switch_logout.connect(self.ShowLoginWindow)
+        self.RootStatistic.switch_logout.connect(self.RootStatistic.close)
+
+    def ShowStatisticGraph(self, index, data):
+        self.Statistic = Statistic(index, data)
+        self.Statistic.show()

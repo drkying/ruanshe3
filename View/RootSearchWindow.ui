@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1029</width>
+    <height>592</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="pushButton_logout">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>480</y>
+      <width>112</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::StrongFocus</enum>
+    </property>
+    <property name="text">
+     <string>logout</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normalon>:/icon/log-out.png</normalon>
+     </iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_print">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>480</y>
+      <width>112</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::StrongFocus</enum>
+    </property>
+    <property name="text">
+     <string>print</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normalon>:/icon/print.png</normalon>
+     </iconset>
+    </property>
+    <property name="shortcut">
+     <string>Ctrl+P</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>14</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;订阅查询&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_search">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>370</y>
+      <width>112</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::StrongFocus</enum>
+    </property>
+    <property name="text">
+     <string>查询</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normalon>:/icon/search.png</normalon>
+     </iconset>
+    </property>
+    <property name="shortcut">
+     <string>Return</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_name">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>100</y>
+      <width>231</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>在此输入需要查询的人员</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_dept">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>170</y>
+      <width>211</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::StrongFocus</enum>
+    </property>
+    <item>
+     <property name="text">
+      <string>--请选择需要查询的部门--</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>技术部</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../db/resource/resource.qrc">
+       <normaloff>:/icon/jishu.png</normaloff>:/icon/jishu.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>运营部</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../db/resource/resource.qrc">
+       <normaloff>:/icon/yunying.png</normaloff>:/icon/yunying.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>后勤部</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../db/resource/resource.qrc">
+       <normaloff>:/icon/houqin.png</normaloff>:/icon/houqin.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>人事部</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../db/resource/resource.qrc">
+       <normaloff>:/icon/renshi.png</normaloff>:/icon/renshi.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>法务部</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../db/resource/resource.qrc">
+       <normaloff>:/icon/fawu.png</normaloff>:/icon/fawu.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>财务部</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../db/resource/resource.qrc">
+       <normaloff>:/icon/caiwu.png</normaloff>:/icon/caiwu.png</iconset>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_newpaper">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>240</y>
+      <width>231</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>在此输入需要查询的报刊</string>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>70</y>
+      <width>711</width>
+      <height>381</height>
+     </rect>
+    </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+    <property name="selectionBehavior">
+     <enum>QAbstractItemView::SelectRows</enum>
+    </property>
+    <column>
+     <property name="text">
+      <string>name</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>dept</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>phone</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>address</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>newspaper</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>price</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>count</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>pay</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QPushButton" name="pushButton_back">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>480</y>
+      <width>112</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::StrongFocus</enum>
+    </property>
+    <property name="text">
+     <string>back</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normalon>:/icon/back.png</normalon>
+     </iconset>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1029</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources>
+  <include location="../../db/resource/resource.qrc"/>
+ </resources>
+ <connections/>
+</ui>
