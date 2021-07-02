@@ -1,5 +1,11 @@
+import random
+
 from PyQt5.QtWidgets import QMessageBox
 import pymysql
+
+from Model.Values import Values
+
+recommendList = []
 
 
 def sqlconn():
@@ -52,3 +58,40 @@ def is_price(price):
             return False
     except Exception:
         return False
+
+
+def getRecommend(n):
+    connect, cursor = sqlconn()
+    sql = "select newsid,newsname from newspaper where style in (" \
+          "select style from newspaper where newsid in (" \
+          "select newsid from subscription where usrname = '%s'))" % (
+              Values.CurrentUser)
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    for s in results:
+        recommendList.append(s)
+
+    if n > len(recommendList):
+        return recommendList
+
+    temp = set()
+    for i in range(0, n):
+        index = random.randint(0, len(recommendList) - 1)
+        if recommendList[index] not in temp:
+            temp.add(recommendList[index])
+        if i == n - 1 and len(temp) < n:
+            temp |= getRecommend(n)
+
+    return temp
+
+
+def getSearchResult(s):
+    connect, cursor = sqlconn()
+    sql = "select newsid,newsname from newspaper where newsname like '%%%s%%'" % s
+    cursor.execute(sql)
+    results= cursor.fetchall()
+    print(results)
+    return results
+
+
+getSearchResult("少年")
