@@ -19,6 +19,12 @@ class UserInfo(QtWidgets.QMainWindow, UserInfoWindow.Ui_MainWindow):
         self.showinfo()
         self.pushButton_changeinfo.clicked.connect(self.change_info)
         self.pushButton_changepasswd.clicked.connect(self.change_passwd)
+        self.pushButton_logout.clicked.connect(self.logout)
+
+    def logout(self):
+        self.switch_logout.emit()
+        pass
+        # 待实现
 
     def showinfo(self):
         html_name = "<html><head/><body><p><span style=\" font-size:18pt;\">" + \
@@ -42,7 +48,7 @@ class UserInfo(QtWidgets.QMainWindow, UserInfoWindow.Ui_MainWindow):
         name = str(self.lineEdit_name.text())
         sex = str(self.comboBox_sex.currentText())
         dept = str(self.comboBox_dept.currentText())
-        if is_legal(name) == True :
+        if is_legal(name) == True:
             connect, cursor = sqlconn()
             sql = "Update user set name='" + name + "', sex='" + sex + "', dept='" + dept + "' where usrname='" + Values.CurrentUser + "'"
             try:

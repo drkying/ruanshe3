@@ -7,8 +7,6 @@ from View import UserAddrWindow
 
 class UserAddr(QtWidgets.QMainWindow, UserAddrWindow.Ui_MainWindow):
     switch_add_addr = QtCore.pyqtSignal(int)
-    switch_back = QtCore.pyqtSignal()
-    switch_logout = QtCore.pyqtSignal()
 
     def __init__(self):
         super(UserAddr, self).__init__()
@@ -20,17 +18,7 @@ class UserAddr(QtWidgets.QMainWindow, UserAddrWindow.Ui_MainWindow):
         self.pushButton_update.clicked.connect(self.table_update)
         self.pushButton_add.clicked.connect(self.add_addr)
         self.pushButton_delete.clicked.connect(self.delete)
-        self.pushButton_back.clicked.connect(self.back)
-        self.pushButton_logout.clicked.connect(self.logout)
         self.tableWidget.itemClicked.connect(self.set_line_text)
-
-    def back(self):
-        self.switch_back.emit()
-
-    def logout(self):
-        Values.CurrentUser = ""
-        Values.CurrentPermission = ""
-        self.switch_logout.emit()
 
     def add_addr(self):
         self.switch_add_addr.emit(1)

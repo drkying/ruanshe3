@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>753</width>
+    <height>512</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>610</x>
-      <y>390</y>
+      <y>400</y>
       <width>112</width>
       <height>32</height>
      </rect>
@@ -39,7 +39,7 @@
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>344</y>
+      <y>320</y>
       <width>501</width>
       <height>41</height>
      </rect>
@@ -52,7 +52,7 @@
     <property name="geometry">
      <rect>
       <x>470</x>
-      <y>390</y>
+      <y>400</y>
       <width>112</width>
       <height>32</height>
      </rect>
@@ -72,30 +72,6 @@
      <string>Return</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_logout">
-    <property name="geometry">
-     <rect>
-      <x>610</x>
-      <y>450</y>
-      <width>112</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::StrongFocus</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="text">
-     <string>logout</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normalon>:/icon/log-out.png</normalon>
-     </iconset>
-    </property>
-   </widget>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
@@ -108,8 +84,13 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLabel" name="label_2">
+       <property name="font">
+        <font>
+         <pointsize>16</pointsize>
+        </font>
+       </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;请选择征订数量：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>请选择征订数量：</string>
        </property>
       </widget>
      </item>
@@ -117,27 +98,6 @@
       <widget class="QSpinBox" name="spinBox_count"/>
      </item>
     </layout>
-   </widget>
-   <widget class="QPushButton" name="pushButton_back">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>450</y>
-      <width>112</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::StrongFocus</enum>
-    </property>
-    <property name="text">
-     <string>back</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normalon>:/icon/back.png</normalon>
-     </iconset>
-    </property>
    </widget>
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
@@ -224,7 +184,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>753</width>
      <height>22</height>
     </rect>
    </property>

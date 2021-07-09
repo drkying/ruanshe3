@@ -11,8 +11,6 @@ from View import RootSearchWindow
 
 class RootSearch(QtWidgets.QMainWindow, RootSearchWindow.Ui_MainWindow):
     switch_preview = QtCore.pyqtSignal()
-    switch_logout = QtCore.pyqtSignal()
-    switch_back = QtCore.pyqtSignal()
     results = []
     row = 0
 
@@ -22,18 +20,8 @@ class RootSearch(QtWidgets.QMainWindow, RootSearchWindow.Ui_MainWindow):
         self.initial()
 
     def initial(self):
-        self.pushButton_logout.clicked.connect(self.logout)
         self.pushButton_search.clicked.connect(self.search)
         self.pushButton_print.clicked.connect(self.excel)
-        self.pushButton_back.clicked.connect(self.back)
-
-    def back(self):
-        self.switch_back.emit()
-
-    def logout(self):
-        Values.CurrentUser = ""
-        Values.CurrentPermission = ""
-        self.switch_logout.emit()
 
     def search(self):
         connect, cursor = sqlconn()

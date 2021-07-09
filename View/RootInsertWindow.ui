@@ -14,29 +14,11 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton_back">
+   <widget class="QPushButton" name="pushButton_fresh">
     <property name="geometry">
      <rect>
       <x>510</x>
       <y>480</y>
-      <width>112</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>back</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normalon>:/icon/back.png</normalon>
-     </iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_fresh">
-    <property name="geometry">
-     <rect>
-      <x>660</x>
-      <y>430</y>
       <width>112</width>
       <height>32</height>
      </rect>
@@ -54,7 +36,7 @@
     <property name="geometry">
      <rect>
       <x>510</x>
-      <y>380</y>
+      <y>430</y>
       <width>112</width>
       <height>32</height>
      </rect>
@@ -103,7 +85,7 @@
     <property name="geometry">
      <rect>
       <x>660</x>
-      <y>380</y>
+      <y>430</y>
       <width>112</width>
       <height>32</height>
      </rect>
@@ -121,7 +103,7 @@
     <property name="geometry">
      <rect>
       <x>580</x>
-      <y>330</y>
+      <y>260</y>
       <width>112</width>
       <height>32</height>
      </rect>
@@ -194,8 +176,8 @@
    <widget class="QPushButton" name="pushButton_insert">
     <property name="geometry">
      <rect>
-      <x>510</x>
-      <y>430</y>
+      <x>580</x>
+      <y>380</y>
       <width>112</width>
       <height>32</height>
      </rect>
@@ -277,7 +259,6 @@
      <string>input price</string>
     </property>
    </widget>
-   <zorder>pushButton_back</zorder>
    <zorder>pushButton_fresh</zorder>
    <zorder>pushButton_up</zorder>
    <zorder>lineEdit_newsid</zorder>
@@ -313,7 +294,6 @@
   <tabstop>pushButton_down</tabstop>
   <tabstop>pushButton_insert</tabstop>
   <tabstop>pushButton_fresh</tabstop>
-  <tabstop>pushButton_back</tabstop>
   <tabstop>pushButton_logout</tabstop>
   <tabstop>tableWidget</tabstop>
  </tabstops>

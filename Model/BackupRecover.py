@@ -9,8 +9,6 @@ from View import BackupRecoverWindow
 
 
 class BackRecover(QtWidgets.QMainWindow, BackupRecoverWindow.Ui_MainWindow):
-    switch_back = QtCore.pyqtSignal()
-    switch_logout = QtCore.pyqtSignal()
 
     def __init__(self):
         super(BackRecover, self).__init__()
@@ -22,16 +20,11 @@ class BackRecover(QtWidgets.QMainWindow, BackupRecoverWindow.Ui_MainWindow):
         self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.pushButton_backup.clicked.connect(self.backup)
         self.pushButton_recover.clicked.connect(self.recover)
-        self.pushButton_back.clicked.connect(self.back)
-        self.pushButton_logout.clicked.connect(self.logout)
 
-    def back(self):
-        self.switch_back.emit()
-
-    def logout(self):
-        Values.CurrentUser = ""
-        Values.CurrentPermission = ""
-        self.switch_logout.emit()
+    # def logout(self):
+    #     Values.CurrentUser = ""
+    #     Values.CurrentPermission = ""
+    #     self.switch_logout.emit()
 
     def show_backup(self):
         filename = list()

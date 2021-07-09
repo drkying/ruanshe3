@@ -1,14 +1,12 @@
 import hashlib
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt5.QtWidgets import QTableWidgetItem, qApp
 
 from Model.Values import Values
 from Model.dataUtils import *
 from View import RootInsertWindow
 
-
 class RootInsert(QtWidgets.QMainWindow, RootInsertWindow.Ui_MainWindow):
-    switch_back = QtCore.pyqtSignal()
     switch_logout = QtCore.pyqtSignal()
 
     def __init__(self):
@@ -17,7 +15,6 @@ class RootInsert(QtWidgets.QMainWindow, RootInsertWindow.Ui_MainWindow):
         self.initial()
 
     def initial(self):
-        self.pushButton_back.clicked.connect(self.back)
         self.pushButton_insert.clicked.connect(self.insert)
         self.pushButton_logout.clicked.connect(self.logout)
         self.pushButton_fresh.clicked.connect(self.show_newspaper)
@@ -40,13 +37,12 @@ class RootInsert(QtWidgets.QMainWindow, RootInsertWindow.Ui_MainWindow):
                 self.tableWidget.setItem(i, j, data)
         connect.close()
 
-    def back(self):
-        self.switch_back.emit()
-
     def logout(self):
-        Values.CurrentUser = ""
-        Values.CurrentPermission = ""
-        self.switch_logout.emit()
+        pass
+        # Values.CurrentUser = ""
+        # Values.CurrentPermission = ""
+        #qApp.exit(EXIT_CODE_REBOOT)
+        #self.switch_logout.emit()
 
     def fresh(self):
         self.show_newspaper()

@@ -9,8 +9,6 @@ from View import UserSubscribeWindow
 
 
 class UserSubscribe(QtWidgets.QMainWindow, UserSubscribeWindow.Ui_MainWindow):
-    switch_back = QtCore.pyqtSignal()
-    switch_logout = QtCore.pyqtSignal()
     switch_add_addr = QtCore.pyqtSignal(int)
 
     def __init__(self):
@@ -23,8 +21,6 @@ class UserSubscribe(QtWidgets.QMainWindow, UserSubscribeWindow.Ui_MainWindow):
         self.pushButton_fresh.clicked.connect(self.show_subscribe)
         self.pushButton_fresh.clicked.connect(self.show_address)
         self.pushButton_fresh.clicked.connect(self.show_newspaper)
-        self.pushButton_back.clicked.connect(self.back)
-        self.pushButton_logout.clicked.connect(self.logout)
         self.show_newspaper()
         self.show_subscribe()
         self.show_address()
@@ -109,14 +105,6 @@ class UserSubscribe(QtWidgets.QMainWindow, UserSubscribeWindow.Ui_MainWindow):
                 data = QTableWidgetItem(str(temp_data))
                 self.tableWidget_subscribe.setItem(i, j, data)
         connect.close()
-
-    def back(self):
-        self.switch_back.emit()
-
-    def logout(self):
-        Values.CurrentUser = ""
-        Values.CurrentPermission = ""
-        self.switch_logout.emit()
 
     def subscribe(self):
         newsid = str(self.comboBox_newsid.currentText()).split('-')[0]

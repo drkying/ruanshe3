@@ -1,32 +1,27 @@
 from PyQt5 import QtCore, QtWidgets
 
+from Model.Statistic import Statistic
 from Model.dataUtils import *
 from Model.Values import Values
 from View import RootStatisticWindow
 
 
 class RootStatistic(QtWidgets.QMainWindow, RootStatisticWindow.Ui_MainWindow):
-    switch_back = QtCore.pyqtSignal()
-    switch_logout = QtCore.pyqtSignal()
     switch_data = QtCore.pyqtSignal(int, dict)
 
     def __init__(self):
         super(RootStatistic, self).__init__()
         self.setupUi(self)
         self.initial()
+        self.switch_data.connect(self.ShowStatisticGraph)
 
     def initial(self):
         self.pushButton_statistic.clicked.connect(self.statistic)
-        self.pushButton_back.clicked.connect(self.back)
-        self.pushButton_logout.clicked.connect(self.logout)
 
-    def back(self):
-        self.switch_back.emit()
 
-    def logout(self):
-        Values.CurrentUser = ""
-        Values.CurrentPermission = ""
-        self.switch_logout.emit()
+    def ShowStatisticGraph(self, index, data):
+        self.Statistic = Statistic(index, data)
+        self.Statistic.show()
 
     def statistic(self):
         index = self.comboBox.currentIndex()

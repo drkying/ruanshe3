@@ -6,8 +6,6 @@ from View import UserSettleWindow
 
 
 class UserSettle(QtWidgets.QMainWindow, UserSettleWindow.Ui_MainWindow):
-    switch_back = QtCore.pyqtSignal()
-    switch_logout = QtCore.pyqtSignal()
     money = 0
 
     def __init__(self):
@@ -18,17 +16,7 @@ class UserSettle(QtWidgets.QMainWindow, UserSettleWindow.Ui_MainWindow):
     def initial(self):
         self.pushButton_settle.clicked.connect(self.settle)
         self.pushButton_fresh.clicked.connect(self.show_subscribe)
-        self.pushButton_back.clicked.connect(self.back)
-        self.pushButton_logout.clicked.connect(self.logout)
         self.show_subscribe()
-
-    def back(self):
-        self.switch_back.emit()
-
-    def logout(self):
-        Values.CurrentUser = ""
-        Values.CurrentPermission = ""
-        self.switch_logout.emit()
 
     def show_subscribe(self):
         connect, cursor = sqlconn()

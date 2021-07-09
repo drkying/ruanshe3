@@ -1,4 +1,5 @@
 import random
+import time
 
 from PyQt5.QtWidgets import QMessageBox
 import pymysql
@@ -89,9 +90,8 @@ def getSearchResult(s):
     connect, cursor = sqlconn()
     sql = "select newsid,newsname from newspaper where newsname like '%%%s%%'" % s
     cursor.execute(sql)
-    results= cursor.fetchall()
+    results = cursor.fetchall()
     print(results)
     return results
 
-
-getSearchResult("少年")
+# getSearchResult("少年")

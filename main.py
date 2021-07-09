@@ -4,8 +4,8 @@ import sys
 from Controller import Controller
 
 if __name__ == "__main__":
+    QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
     try:
-        QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
         app = QtWidgets.QApplication(sys.argv)
         control = Controller()
         control.ShowLoginWindow()

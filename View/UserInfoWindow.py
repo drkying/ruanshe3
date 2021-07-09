@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 600)
+        MainWindow.resize(796, 560)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.lineEdit_confirm = QtWidgets.QLineEdit(self.centralwidget)
@@ -108,9 +108,17 @@ class Ui_MainWindow(object):
         self.pushButton_changepasswd.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.pushButton_changepasswd.setIcon(icon8)
         self.pushButton_changepasswd.setObjectName("pushButton_changepasswd")
+        self.pushButton_logout = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_logout.setGeometry(QtCore.QRect(660, 50, 112, 32))
+        self.pushButton_logout.setFocusPolicy(QtCore.Qt.StrongFocus)
+        self.pushButton_logout.setStyleSheet("")
+        icon9 = QtGui.QIcon()
+        icon9.addPixmap(QtGui.QPixmap(":/icon/log-out.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        self.pushButton_logout.setIcon(icon9)
+        self.pushButton_logout.setObjectName("pushButton_logout")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 22))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 796, 22))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -149,4 +157,5 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:18pt;\">用户名：</span></p></body></html>"))
         self.label.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:24pt;\">用户信息设置</span></p></body></html>"))
         self.pushButton_changepasswd.setText(_translate("MainWindow", "修改密码"))
+        self.pushButton_logout.setText(_translate("MainWindow", "logout"))
 import resource_rc

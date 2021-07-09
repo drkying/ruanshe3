@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>521</width>
-    <height>260</height>
+    <width>395</width>
+    <height>246</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QComboBox" name="comboBox">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>30</y>
+      <x>110</x>
+      <y>40</y>
       <width>171</width>
       <height>31</height>
      </rect>
@@ -52,32 +52,11 @@
      </property>
     </item>
    </widget>
-   <widget class="QPushButton" name="pushButton_logout">
-    <property name="geometry">
-     <rect>
-      <x>350</x>
-      <y>150</y>
-      <width>112</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::StrongFocus</enum>
-    </property>
-    <property name="text">
-     <string>Logout</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <disabledoff>:/icon/log-out.png</disabledoff>
-     </iconset>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton_statistic">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>90</y>
+      <x>140</x>
+      <y>130</y>
       <width>112</width>
       <height>32</height>
      </rect>
@@ -97,34 +76,13 @@
      <string>Return</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_back">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>150</y>
-      <width>112</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::StrongFocus</enum>
-    </property>
-    <property name="text">
-     <string>back</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <disabledoff>:/icon/back.png</disabledoff>
-     </iconset>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>521</width>
+     <width>395</width>
      <height>22</height>
     </rect>
    </property>

@@ -22,18 +22,8 @@ class UserManager(QtWidgets.QMainWindow, UserManagerWindow.Ui_MainWindow):
     def initial(self):
         self.pushButton_change.clicked.connect(self.change)
         self.pushButton_fresh.clicked.connect(self.show_subscribe)
-        self.pushButton_back.clicked.connect(self.back)
-        self.pushButton_logout.clicked.connect(self.logout)
         self.show_subscribe()
         self.tableWidget.itemClicked.connect(self.set_news_id)
-
-    def back(self):
-        self.switch_back.emit()
-
-    def logout(self):
-        Values.CurrentUser = ""
-        Values.CurrentPermission = ""
-        self.switch_logout.emit()
 
     def set_news_id(self):
         select = self.tableWidget.selectedItems()

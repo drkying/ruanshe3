@@ -6,35 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>696</width>
-    <height>541</height>
+    <width>692</width>
+    <height>490</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Backup &amp; Recover</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton_back">
-    <property name="geometry">
-     <rect>
-      <x>400</x>
-      <y>430</y>
-      <width>112</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::StrongFocus</enum>
-    </property>
-    <property name="text">
-     <string>back</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <disabledoff>:/icon/back.png</disabledoff>
-     </iconset>
-    </property>
-   </widget>
    <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
@@ -112,34 +91,13 @@
      </iconset>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_logout">
-    <property name="geometry">
-     <rect>
-      <x>540</x>
-      <y>430</y>
-      <width>112</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::StrongFocus</enum>
-    </property>
-    <property name="text">
-     <string>Logout</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <disabledoff>:/icon/log-out.png</disabledoff>
-     </iconset>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>696</width>
+     <width>692</width>
      <height>22</height>
     </rect>
    </property>
@@ -150,8 +108,6 @@
   <tabstop>tableWidget</tabstop>
   <tabstop>pushButton_backup</tabstop>
   <tabstop>pushButton_recover</tabstop>
-  <tabstop>pushButton_back</tabstop>
-  <tabstop>pushButton_logout</tabstop>
  </tabstops>
  <resources>
   <include location="../resource/resource.qrc"/>

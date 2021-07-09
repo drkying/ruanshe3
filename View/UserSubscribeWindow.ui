@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>764</width>
+    <height>567</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="pushButton_subscribe">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>430</y>
+      <x>490</x>
+      <y>380</y>
       <width>112</width>
       <height>32</height>
      </rect>
@@ -147,8 +147,8 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>120</y>
+      <x>500</x>
+      <y>70</y>
       <width>241</width>
       <height>171</height>
      </rect>
@@ -194,8 +194,8 @@
    <widget class="QPushButton" name="pushButton_fresh">
     <property name="geometry">
      <rect>
-      <x>660</x>
-      <y>430</y>
+      <x>630</x>
+      <y>380</y>
       <width>112</width>
       <height>32</height>
      </rect>
@@ -215,55 +215,13 @@
      <string>Ctrl+R</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_logout">
-    <property name="geometry">
-     <rect>
-      <x>660</x>
-      <y>490</y>
-      <width>112</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::StrongFocus</enum>
-    </property>
-    <property name="text">
-     <string>Logout</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <disabledoff>:/icon/log-out.png</disabledoff>
-     </iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_back">
-    <property name="geometry">
-     <rect>
-      <x>520</x>
-      <y>490</y>
-      <width>112</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::StrongFocus</enum>
-    </property>
-    <property name="text">
-     <string>back</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <disabledoff>:/icon/back.png</disabledoff>
-     </iconset>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>764</width>
      <height>22</height>
     </rect>
    </property>
@@ -278,8 +236,6 @@
   <tabstop>comboBox_addr</tabstop>
   <tabstop>pushButton_subscribe</tabstop>
   <tabstop>pushButton_fresh</tabstop>
-  <tabstop>pushButton_back</tabstop>
-  <tabstop>pushButton_logout</tabstop>
  </tabstops>
  <resources>
   <include location="../resource/resource.qrc"/>
