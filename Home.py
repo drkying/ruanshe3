@@ -1,6 +1,8 @@
 # coding:utf-8
+import datetime
 import hashlib
 
+import qdarkstyle
 from PyQt5 import QtCore, QtGui, QtWidgets, sip
 
 import sys
@@ -11,6 +13,7 @@ from PyQt5.QtGui import QMouseEvent, QIcon
 from PyQt5.QtWidgets import QWidget, QMessageBox
 
 from Model.BackupRecover import BackRecover
+from Model.Login import Login_Window
 from Model.Register import Register
 from Model.RootInsert import RootInsert
 from Model.RootSearch import RootSearch
@@ -23,12 +26,11 @@ from Model.UserManage import UserManager
 from Model.UserSettle import UserSettle
 from Model.UserSubscribe import UserSubscribe
 from Model.Values import Values
-from Model.dataUtils import getRecommend, getSearchResult
+import Model.dataUtils
 
 
 class MainUi(QtWidgets.QMainWindow):
     recommend = set()
-    switch_logout = QtCore.pyqtSignal()
 
     def __init__(self):
         super().__init__()
@@ -36,7 +38,6 @@ class MainUi(QtWidgets.QMainWindow):
         self.addLeft()
         self.addRight()
         self.improveUi()
-
 
     def init_ui(self):
         # self.setFixedSize(960, 700)
@@ -155,17 +156,124 @@ class MainUi(QtWidgets.QMainWindow):
         self.right_recommend_layout = QtWidgets.QGridLayout()  # 推荐封面网格布局
         self.right_recommend_widget.setLayout(self.right_recommend_layout)
 
-        temp = list(getRecommend(5))
-        for i in range(len(temp)):
+        global recommend_results
+        try:
+            recommend_results = list(Model.dataUtils.getRecommend(5))
+            print("recommend result:")
+            print(recommend_results)
+        except Exception as e:
+            recommend_results = Model.dataUtils.getSearchResult("")
+            print("getRecommend error:" + e)
+        for i in range(len(recommend_results)):
             recommend_button = QtWidgets.QToolButton()
-            recommend_button.setText(temp[i][1])
+            recommend_button.setText(recommend_results[i][1])
             recommend_button.setIcon(QtGui.QIcon('D:/myBlog/ruanshe3/img.png'))  # 设置按钮图标
             recommend_button.setIconSize(QtCore.QSize(100, 100))  # 设置图标大小
             recommend_button.setToolButtonStyle(QtCore.Qt.ToolButtonTextUnderIcon)  # 设置按钮形式为上图下文
+            recommend_button.clicked.connect(lambda: (self.check_sub()))
             self.right_recommend_layout.addWidget(recommend_button, int(i / 5), i % 5)
 
         self.right_layout.addWidget(self.right_recommend_label, 1, 0, 1, 9)
         self.right_layout.addWidget(self.right_recommend_widget, 2, 0, 2, 9)
+
+        self.right_widget.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
+
+    def showSearchResult(self):
+        s = self.right_bar_widget_search_input.text()
+        self.clearRight()
+
+        self.right_bar_widget = QtWidgets.QWidget()  # 右侧顶部搜索框部件
+        self.right_bar_layout = QtWidgets.QGridLayout()  # 右侧顶部搜索框网格布局
+        self.right_bar_widget.setLayout(self.right_bar_layout)
+        self.search_icon = QtWidgets.QLabel(chr(0xf002) + ' ' + '搜索  ')
+        self.search_icon.setFont(qtawesome.font('fa', 16))
+        self.right_bar_widget_search_input = QtWidgets.QLineEdit()
+        self.right_bar_widget_search_input.setPlaceholderText(s)
+        self.right_bar_widget_search_input.returnPressed.connect(self.showSearchResult)
+        self.right_bar_layout.addWidget(self.search_icon, 0, 0, 1, 1)
+        self.right_bar_layout.addWidget(self.right_bar_widget_search_input, 0, 1, 1, 8)
+        self.right_layout.addWidget(self.right_bar_widget, 0, 0, 1, 9)
+
+        self.right_recommend_label = QtWidgets.QLabel("搜索结果")
+        self.right_recommend_label.setObjectName('right_lable')
+
+        self.right_recommend_widget = QtWidgets.QWidget()  # 推荐封面部件
+        self.right_recommend_layout = QtWidgets.QGridLayout()  # 推荐封面网格布局
+        self.right_recommend_widget.setLayout(self.right_recommend_layout)
+
+        global search_result
+        search_result = Model.dataUtils.getSearchResult(s)
+        for i in range(len(search_result)):
+            recommend_button = QtWidgets.QToolButton()
+            recommend_button.setText(search_result[i][1])
+            recommend_button.setIcon(QtGui.QIcon('D:/myBlog/ruanshe3/img.png'))  # 设置按钮图标
+            recommend_button.setIconSize(QtCore.QSize(100, 100))  # 设置图标大小
+            recommend_button.setToolButtonStyle(QtCore.Qt.ToolButtonTextUnderIcon)  # 设置按钮形式为上图下文
+            recommend_button.clicked.connect(lambda: (self.check_sub()))
+            self.right_recommend_layout.addWidget(recommend_button, int(i / 5), i % 5)
+
+        self.right_layout.addWidget(self.right_recommend_label, 1, 0, 1, 9)
+        self.right_layout.addWidget(self.right_recommend_widget, 2, 0, 2, 9)
+        self.right_widget.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
+
+    def check_sub(self):
+        a = QMessageBox.information(self, "温馨提示", "是否订阅一本该图书?", QMessageBox.Yes | QMessageBox.Cancel)
+        if QMessageBox.Yes == a:
+            connect, cursor = Model.dataUtils.sqlconn()
+            sql = "Select phone, addr from address where usrname='" + Values.CurrentUser + "'"
+
+            if cursor.execute(sql) <= 0:
+                QMessageBox.information(self,
+                                        "警告",
+                                        "地址信息不全，请补充后再进行订阅",
+                                        QMessageBox.Yes)
+                return
+            results = cursor.fetchall()
+            connect.close()
+
+            i = self.sender()
+            index = self.right_recommend_layout.indexOf(i)
+            position = self.right_recommend_layout.getItemPosition(index)
+
+            if self.right_recommend_label.text() == '杂志推荐':
+                temp = recommend_results
+            elif self.right_recommend_label.text() == '搜索结果':
+                temp = search_result
+            else:
+                print("错误")
+                return
+
+            newsid = temp[position[0] * 5 + position[1]][0]
+            count = 1
+            phone = results[0][0]
+            addr = results[0][1]
+            if int(newsid) > 0:
+                connect, cursor = Model.dataUtils.sqlconn()
+                sql_price = "select price from newspaper where newsid = " + str(newsid)
+                cursor.execute(sql_price)
+                results = cursor.fetchall()
+                price = results[0][0]
+                pay = price * count
+                curr_time = datetime.datetime.now()
+                time_str = datetime.datetime.strftime(curr_time, '%Y-%m-%d %H:%M:%S')
+
+                sql = "Insert into subscription values ('" + Values.CurrentUser + "'," + str(newsid) + "," + str(
+                    count) + "," + str(pay) + "," + str(
+                    pay) + ",'" + phone + "','" + addr + "','" + time_str + "', NULL)"
+                try:
+                    cursor.execute(sql)
+                except Exception as e:
+                    connect.rollback()
+                    Model.dataUtils.WarningBox(self, "sql插入或更新失败")
+                    print(e)
+                else:
+                    connect.commit()
+                    Model.dataUtils.SuccBox(self, "订阅成功")
+                connect.close()
+            else:
+                print("出现错误")
+        else:
+            pass
 
     def improveUi(self):
         self.left_widget.setStyleSheet('''
@@ -259,27 +367,27 @@ class MainUi(QtWidgets.QMainWindow):
         self.clearRight()
         self.addLeft()
         self.addRight()
-        gui.left_button_1.clicked.connect(
-            lambda: (checkPermission(gui, 1))
-        )
-        gui.left_button_2.clicked.connect(
-            lambda: (checkPermission(gui, 2)))
-        gui.left_button_3.clicked.connect(
-            lambda: (checkPermission(gui, 3)))
-        gui.left_button_4.clicked.connect(
-            lambda: (checkPermission(gui, 4)))
-        gui.left_button_5.clicked.connect(
-            lambda: (checkPermission(gui, 5)))
-        gui.left_button_6.clicked.connect(
-            lambda: (checkPermission(gui, 6)))
-        gui.left_button_7.clicked.connect(
-            lambda: (checkPermission(gui, 7)))
-        gui.left_button_8.clicked.connect(
-            lambda: (checkPermission(gui, 8)))
-        gui.left_button_9.clicked.connect(
-            lambda: (checkPermission(gui, 9)))
-        gui.left_button_10.clicked.connect(
-            lambda: (checkPermission(gui, 10)))
+
+        self.left_button_1.clicked.connect(
+            lambda: (checkPermission(self, 1)))
+        self.left_button_2.clicked.connect(
+            lambda: (checkPermission(self, 2)))
+        self.left_button_3.clicked.connect(
+            lambda: (checkPermission(self, 3)))
+        self.left_button_4.clicked.connect(
+            lambda: (checkPermission(self, 4)))
+        self.left_button_5.clicked.connect(
+            lambda: (checkPermission(self, 5)))
+        self.left_button_6.clicked.connect(
+            lambda: (checkPermission(self, 6)))
+        self.left_button_7.clicked.connect(
+            lambda: (checkPermission(self, 7)))
+        self.left_button_8.clicked.connect(
+            lambda: (checkPermission(self, 8)))
+        self.left_button_9.clicked.connect(
+            lambda: (checkPermission(self, 9)))
+        self.left_button_10.clicked.connect(
+            lambda: (checkPermission(self, 10)))
 
     # def mouseMoveEvent(self, e: QMouseEvent):  # 重写移动事件
     #     self._endPos = e.pos() - self._startPos
@@ -296,59 +404,29 @@ class MainUi(QtWidgets.QMainWindow):
     #         self._startPos = None
     #         self._endPos = None
 
-    def showSearchResult(self):
-        s = self.right_bar_widget_search_input.text()
-        self.clearRight()
-
-        self.right_bar_widget = QtWidgets.QWidget()  # 右侧顶部搜索框部件
-        self.right_bar_layout = QtWidgets.QGridLayout()  # 右侧顶部搜索框网格布局
-        self.right_bar_widget.setLayout(self.right_bar_layout)
-        self.search_icon = QtWidgets.QLabel(chr(0xf002) + ' ' + '搜索  ')
-        self.search_icon.setFont(qtawesome.font('fa', 16))
-        self.right_bar_widget_search_input = QtWidgets.QLineEdit()
-        self.right_bar_widget_search_input.setPlaceholderText(s)
-        self.right_bar_widget_search_input.returnPressed.connect(self.showSearchResult)
-        self.right_bar_layout.addWidget(self.search_icon, 0, 0, 1, 1)
-        self.right_bar_layout.addWidget(self.right_bar_widget_search_input, 0, 1, 1, 8)
-        self.right_layout.addWidget(self.right_bar_widget, 0, 0, 1, 9)
-
-        self.right_recommend_label = QtWidgets.QLabel("搜索结果")
-        self.right_recommend_label.setObjectName('right_lable')
-
-        self.right_recommend_widget = QtWidgets.QWidget()  # 推荐封面部件
-        self.right_recommend_layout = QtWidgets.QGridLayout()  # 推荐封面网格布局
-        self.right_recommend_widget.setLayout(self.right_recommend_layout)
-
-        results = getSearchResult(s)
-        for i in range(len(results)):
-            recommend_button = QtWidgets.QToolButton()
-            recommend_button.setText(results[i][1])
-            recommend_button.setIcon(QtGui.QIcon('D:/myBlog/ruanshe3/img.png'))  # 设置按钮图标
-            recommend_button.setIconSize(QtCore.QSize(100, 100))  # 设置图标大小
-            recommend_button.setToolButtonStyle(QtCore.Qt.ToolButtonTextUnderIcon)  # 设置按钮形式为上图下文
-            self.right_recommend_layout.addWidget(recommend_button, int(i / 5), i % 5)
-
-        self.right_layout.addWidget(self.right_recommend_label, 1, 0, 1, 9)
-        self.right_layout.addWidget(self.right_recommend_widget, 2, 0, 2, 9)
-
 
 def checkPermission(a, b):
     if 2 <= b <= 6:
         if Values.IsUserLogin:
             showit(a, b)
         else:
-            #showLogin(a)
+            # showLogin(a)
             pass
     elif 7 <= b <= 10:
         if Values.IsRootLogin:
             showit(a, b)
         else:
             pass
-            #showLogin(a)
+            # showLogin(a)
     else:
         showit(a, b)
     return
 
+
+def showUserAddAddr():
+    global y
+    y = UserAddAddr()
+    y.show()
 
 
 def showit(a, b):
@@ -360,13 +438,14 @@ def showit(a, b):
 
     elif b == 2:
         x = eval('UserSubscribe()')
+        x.switch_add_addr.connect(lambda: (showit(a, 5)))
     elif b == 3:
         x = eval('UserManager()')
     elif b == 4:
         x = eval('UserSettle()')
     elif b == 5:
         x = eval('UserAddr()')
-        # x.switch_add_addr.connect()
+        x.switch_add_addr.connect(showUserAddAddr)
     elif b == 6:
         x = eval('UserInfo()')
 
@@ -382,98 +461,30 @@ def showit(a, b):
         a.clearRight()
         a.right_layout.addWidget(x, 2, 0)
 
-def logout(gui):
-    gui.close()
 
-
-
-class Login_Window(QtWidgets.QMainWindow):
-
-    def __init__(self):
-        super(Login_Window, self).__init__()
-        self.setupUi(self)
-        self.retranslateUi(self)
-
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(386, 127)
-        MainWindow.setWindowIcon(QIcon('logo.jpg'))
-        # MainWindow.setStyleSheet("background-image:url(logo.jpg)")
-        self.centralWidget = QtWidgets.QWidget(MainWindow)
-        self.centralWidget.setObjectName("centralWidget")
-        self.lineEdit = QtWidgets.QLineEdit(self.centralWidget)
-        self.lineEdit.setGeometry(QtCore.QRect(250, 20, 100, 20))
-        self.lineEdit.setText("")
-        self.lineEdit.setObjectName("lineEdit")
-        self.lineEdit_2 = QtWidgets.QLineEdit(self.centralWidget)
-        self.lineEdit_2.setGeometry(QtCore.QRect(250, 50, 100, 20))
-        self.lineEdit_2.setText("")
-        self.lineEdit_2.setEchoMode(QtWidgets.QLineEdit.Password)
-        self.lineEdit_2.setObjectName("lineEdit_2")
-        self.label = QtWidgets.QLabel(self.centralWidget)
-        self.label.setGeometry(QtCore.QRect(200, 24, 24, 12))
-        self.label.setTextFormat(QtCore.Qt.AutoText)
-        self.label.setObjectName("label")
-        self.label_2 = QtWidgets.QLabel(self.centralWidget)
-        self.label_2.setGeometry(QtCore.QRect(200, 54, 24, 12))
-        self.label_2.setObjectName("label_2")
-        self.pushButton = QtWidgets.QPushButton(self.centralWidget)
-        self.pushButton.setGeometry(QtCore.QRect(190, 90, 75, 23))
-        self.pushButton.setObjectName("pushButton")
-        self.pushButton_2 = QtWidgets.QPushButton(self.centralWidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(290, 90, 75, 23))
-        self.pushButton_2.setObjectName("pushButton_2")
-        MainWindow.setCentralWidget(self.centralWidget)
-
-        self.pushButton.clicked.connect(self.word_get)
-        self.pushButton_2.clicked.connect(MainWindow.close)
-
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
-    def retranslateUi(self, MainWindow):
-        _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "报刊订阅系统"))
-        self.lineEdit.setPlaceholderText(_translate("MainWindow", "请输入帐号"))
-        self.lineEdit_2.setPlaceholderText(_translate("MainWindow", "请输入密码"))
-        self.lineEdit_2.returnPressed.connect(self.word_get)
-        self.label.setText(_translate("MainWindow", "帐号"))
-        self.label_2.setText(_translate("MainWindow", "密码"))
-        self.pushButton.setText(_translate("MainWindow", "确定"))
-        self.pushButton_2.setText(_translate("MainWindow", "注册"))
-
-    def word_get(self):
-        login_user = self.lineEdit.text()
-        login_password = self.lineEdit_2.text()
-        passwd = hashlib.md5(login_password.encode('UTF-8')).hexdigest()
-        sql_root = "select * from root where usrname='" + login_user + "' and passwd='" + passwd + "'"
-        sql_user = "select * from user where usrname='" + login_user + "' and passwd='" + passwd + "'"
-        if login_user == 'admin':
-            if login_password == '123456':
-                Values.IsUserLogin = True
-                gui.show()
-                login.close()
-            elif login_password == '112233':
-                Values.IsRootLogin = True
-                gui.show()
-                showit(gui, 7)
-                login.close()
-        else:
-            QMessageBox.warning(self,
-                                "警告",
-                                "用户名或密码错误！",
-                                QMessageBox.Yes)
-            self.lineEdit.setFocus()
-        gui.refreshAll()
-
-
-if __name__ == '__main__':
+def runmain():
     QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
     app = QtWidgets.QApplication(sys.argv)
     gui = MainUi()
+    reg = Register()
     gui.resize(1000, 600)
-
-    # gui.show()
-    login = Login_Window()
+    login = Login_Window(gui, reg)
+    # login.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
     login.show()
-    sys.exit(app.exec_())
+    current_exit_code = app.exec_()
+    if current_exit_code == 1111:
+        Values.IsRootLogin = False
+        Values.IsUserLogin = False
+        if not gui.isHidden():
+            gui.hide()
+        if not reg.isHidden():
+            reg.hide()
+        runmain()
+    else:
+        sys.exit()
+
+
+global current_exit_code
+if __name__ == '__main__':
+    current_exit_code = 1111
+    runmain()

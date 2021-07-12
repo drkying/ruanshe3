@@ -1,6 +1,8 @@
 import hashlib
 
+import qdarkstyle
 from PyQt5 import QtCore, QtWidgets
+from PyQt5.QtWidgets import qApp
 
 from Model.dataUtils import *
 from Model.Values import Values
@@ -8,12 +10,12 @@ from View import UserInfoWindow
 
 
 class UserInfo(QtWidgets.QMainWindow, UserInfoWindow.Ui_MainWindow):
-    switch_logout = QtCore.pyqtSignal()
 
     def __init__(self):
         super(UserInfo, self).__init__()
         self.setupUi(self)
         self.initial()
+        self.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
 
     def initial(self):
         self.showinfo()
@@ -22,7 +24,7 @@ class UserInfo(QtWidgets.QMainWindow, UserInfoWindow.Ui_MainWindow):
         self.pushButton_logout.clicked.connect(self.logout)
 
     def logout(self):
-        self.switch_logout.emit()
+        qApp.exit(1111)
         pass
         # 待实现
 
@@ -70,11 +72,6 @@ class UserInfo(QtWidgets.QMainWindow, UserInfoWindow.Ui_MainWindow):
         self.lineEdit_oldpasswd.clear()
         self.lineEdit_newpasswd.clear()
         self.lineEdit_confirm.clear()
-
-    def logout(self):
-        Values.CurrentUser = ""
-        Values.CurrentPermission = ""
-        self.switch_logout.emit()
 
     def change_passwd(self):
         oldpasswd = str(self.lineEdit_oldpasswd.text())

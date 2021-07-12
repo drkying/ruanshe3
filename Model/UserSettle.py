@@ -1,3 +1,4 @@
+import qdarkstyle
 from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QTableWidgetItem
 from Model.Values import Values
@@ -12,6 +13,7 @@ class UserSettle(QtWidgets.QMainWindow, UserSettleWindow.Ui_MainWindow):
         super(UserSettle, self).__init__()
         self.setupUi(self)
         self.initial()
+        self.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
 
     def initial(self):
         self.pushButton_settle.clicked.connect(self.settle)

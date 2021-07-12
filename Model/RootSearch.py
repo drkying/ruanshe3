@@ -1,5 +1,6 @@
 import datetime
 
+import qdarkstyle
 import xlwt
 from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QTableWidgetItem
@@ -18,6 +19,7 @@ class RootSearch(QtWidgets.QMainWindow, RootSearchWindow.Ui_MainWindow):
         super(RootSearch, self).__init__()
         self.setupUi(self)
         self.initial()
+        self.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
 
     def initial(self):
         self.pushButton_search.clicked.connect(self.search)

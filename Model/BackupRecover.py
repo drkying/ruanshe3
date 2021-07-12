@@ -1,6 +1,7 @@
 import os
 import datetime
 
+import qdarkstyle
 from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QTableWidgetItem, QHeaderView
 from Model.Values import Values
@@ -14,17 +15,13 @@ class BackRecover(QtWidgets.QMainWindow, BackupRecoverWindow.Ui_MainWindow):
         super(BackRecover, self).__init__()
         self.setupUi(self)
         self.initial()
+        self.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
 
     def initial(self):
         self.show_backup()
         self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.pushButton_backup.clicked.connect(self.backup)
         self.pushButton_recover.clicked.connect(self.recover)
-
-    # def logout(self):
-    #     Values.CurrentUser = ""
-    #     Values.CurrentPermission = ""
-    #     self.switch_logout.emit()
 
     def show_backup(self):
         filename = list()

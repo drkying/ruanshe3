@@ -1,3 +1,4 @@
+import qdarkstyle
 from PyQt5 import QtCore, QtWidgets
 
 from Model.Statistic import Statistic
@@ -14,6 +15,7 @@ class RootStatistic(QtWidgets.QMainWindow, RootStatisticWindow.Ui_MainWindow):
         self.setupUi(self)
         self.initial()
         self.switch_data.connect(self.ShowStatisticGraph)
+        self.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
 
     def initial(self):
         self.pushButton_statistic.clicked.connect(self.statistic)

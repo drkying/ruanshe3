@@ -1,5 +1,7 @@
 import os
 import datetime
+
+import qdarkstyle
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from PyQt5 import QtWidgets
 from matplotlib import pyplot as plt
@@ -25,6 +27,7 @@ class Statistic(QtWidgets.QMainWindow, StatisticGraph.Ui_MainWindow):
         self.index = index
         self.data = data
         self.initial()
+        self.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
 
     def initial(self):
         self.verticalLayout.addWidget(self.canvas)

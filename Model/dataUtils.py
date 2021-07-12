@@ -6,8 +6,6 @@ import pymysql
 
 from Model.Values import Values
 
-recommendList = []
-
 
 def sqlconn():
     connect = pymysql.connect(
@@ -62,6 +60,7 @@ def is_price(price):
 
 
 def getRecommend(n):
+    recommendList = []
     connect, cursor = sqlconn()
     sql = "select newsid,newsname from newspaper where style in (" \
           "select style from newspaper where newsid in (" \
@@ -93,5 +92,3 @@ def getSearchResult(s):
     results = cursor.fetchall()
     print(results)
     return results
-
-# getSearchResult("少年")

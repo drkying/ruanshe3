@@ -1,3 +1,4 @@
+import qdarkstyle
 from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QTableWidgetItem
 from Model.Values import Values
@@ -6,22 +7,24 @@ from View import UserAddrWindow
 
 
 class UserAddr(QtWidgets.QMainWindow, UserAddrWindow.Ui_MainWindow):
-    switch_add_addr = QtCore.pyqtSignal(int)
+    switch_add_addr = QtCore.pyqtSignal()
 
     def __init__(self):
         super(UserAddr, self).__init__()
         self.setupUi(self)
         self.initial()
+        self.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
 
     def initial(self):
         self.show_addr()
         self.pushButton_update.clicked.connect(self.table_update)
         self.pushButton_add.clicked.connect(self.add_addr)
         self.pushButton_delete.clicked.connect(self.delete)
+        self.pushButton_refresh.clicked.connect(self.show_addr)
         self.tableWidget.itemClicked.connect(self.set_line_text)
 
     def add_addr(self):
-        self.switch_add_addr.emit(1)
+        self.switch_add_addr.emit()
 
     def show_addr(self):
         connect, cursor = sqlconn()

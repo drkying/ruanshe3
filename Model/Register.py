@@ -1,24 +1,28 @@
 import hashlib
+import time
+
+import qdarkstyle
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import qApp
 
 from Model.dataUtils import *
 from View import RegisterWindow
 
 
 class Register(QtWidgets.QMainWindow, RegisterWindow.Ui_MainWindow):
-    switch_back = QtCore.pyqtSignal()
 
     def __init__(self):
         super(Register, self).__init__()
         self.setupUi(self)
         self.initial()
+        self.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
+
+    def closeEvent(self, event):
+        event.ignore()
+        qApp.exit(1111)
 
     def initial(self):
-        self.pushButton_back.clicked.connect(self.back)
         self.pushButton_register.clicked.connect(self.register)
-
-    def back(self):
-        self.switch_back.emit()
 
     def clear_line_edit(self):
         self.lineEdit_addr.clear()
@@ -77,7 +81,10 @@ class Register(QtWidgets.QMainWindow, RegisterWindow.Ui_MainWindow):
                     print(e)
                 else:
                     connect.commit()
-                    SuccBox(self, usrname + '，注册成功')
-                    self.back()
+                    QMessageBox.information(self,
+                                            "恭喜",
+                                            usrname + ",注册成功",
+                                            QMessageBox.Yes)
+                    qApp.exit(1111)
 
         connect.close()

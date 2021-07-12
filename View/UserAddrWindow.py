@@ -55,6 +55,12 @@ class Ui_MainWindow(object):
         icon2.addPixmap(QtGui.QPixmap(":/icon/zengjia.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         self.pushButton_add.setIcon(icon2)
         self.pushButton_add.setObjectName("pushButton_add")
+        self.pushButton_refresh = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_refresh.setGeometry(QtCore.QRect(420, 300, 112, 32))
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(":/icon/fresh.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_refresh.setIcon(icon3)
+        self.pushButton_refresh.setObjectName("pushButton_refresh")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 635, 22))
@@ -80,4 +86,5 @@ class Ui_MainWindow(object):
         self.pushButton_update.setShortcut(_translate("MainWindow", "Return"))
         self.lineEdit.setPlaceholderText(_translate("MainWindow", "在表格中选中需要修改的项后，在此输入修改后的值"))
         self.pushButton_add.setText(_translate("MainWindow", "新增地址"))
+        self.pushButton_refresh.setText(_translate("MainWindow", "刷新"))
 import resource_rc

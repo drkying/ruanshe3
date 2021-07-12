@@ -1,22 +1,19 @@
+import qdarkstyle
 from PyQt5 import QtCore, QtWidgets
-from Model.Values import Values
 from Model.dataUtils import *
 from View import UserAddAddrWindow
 
 
 class UserAddAddr(QtWidgets.QMainWindow, UserAddAddrWindow.Ui_MainWindow):
-    switch_to_manage = QtCore.pyqtSignal()
-    switch_to_subscribe = QtCore.pyqtSignal()
-    pre_window = 0
 
-    def __init__(self, pre):
+    def __init__(self):
         super(UserAddAddr, self).__init__()
         self.setupUi(self)
-        self.initial(pre)
+        self.initial()
+        self.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
 
-    def initial(self, pre):
+    def initial(self):
         self.pushButton_add.clicked.connect(self.add_addr)
-        self.pre_window = pre
 
     def add_addr(self):
         phone = str(self.lineEdit_phone.text())
@@ -43,9 +40,6 @@ class UserAddAddr(QtWidgets.QMainWindow, UserAddAddrWindow.Ui_MainWindow):
             else:
                 connect.commit()
                 SuccBox(self, "新增地址成功")
-                if self.pre_window == 1:
-                    self.switch_to_manage.emit()
-                elif self.pre_window == 2:
-                    self.switch_to_subscribe.emit()
+                self.close()
 
         connect.close()

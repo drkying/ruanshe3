@@ -1,5 +1,6 @@
 import datetime
 
+import qdarkstyle
 from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QTableWidgetItem
 
@@ -9,12 +10,13 @@ from View import UserSubscribeWindow
 
 
 class UserSubscribe(QtWidgets.QMainWindow, UserSubscribeWindow.Ui_MainWindow):
-    switch_add_addr = QtCore.pyqtSignal(int)
+    switch_add_addr = QtCore.pyqtSignal()
 
     def __init__(self):
         super(UserSubscribe, self).__init__()
         self.setupUi(self)
         self.initial()
+        self.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
 
     def initial(self):
         self.pushButton_subscribe.clicked.connect(self.subscribe)
@@ -28,10 +30,13 @@ class UserSubscribe(QtWidgets.QMainWindow, UserSubscribeWindow.Ui_MainWindow):
         self.comboBox_addr.activated.connect(self.is_add)
         self.tableWidget_newspaper.itemClicked.connect(self.set_news_id)
 
+    def setGui(self, gui):
+        self.gui = gui
+
     def is_add(self):
         addr = str(self.comboBox_addr.currentText())
-        if addr == "新增地址":
-            self.switch_add_addr.emit(2)
+        if addr == "如果未添加地址，请到地址管理中添加":
+            self.switch_add_addr.emit()
         else:
             pass
 
@@ -59,7 +64,7 @@ class UserSubscribe(QtWidgets.QMainWindow, UserSubscribeWindow.Ui_MainWindow):
         combo = self.boxitem(results)
         self.comboBox_addr.addItem("--请选择订阅地址--")
         self.comboBox_addr.addItems(combo)
-        self.comboBox_addr.addItem("新增地址")
+        self.comboBox_addr.addItem("如果未添加地址，请到地址管理中添加")
         connect.close()
 
     def show_news_id(self):
@@ -113,7 +118,7 @@ class UserSubscribe(QtWidgets.QMainWindow, UserSubscribeWindow.Ui_MainWindow):
         phone = address.split('-', 1)[0]
         addr = address.split('-', 1)[1]
 
-        if is_int_id(newsid) == False or count == 0 or address == "--请选择订阅地址--" or address == "新增地址":
+        if is_int_id(newsid) == False or count == 0 or address == "--请选择订阅地址--" or address == "如果未添加地址，请到地址管理中添加":
             WarningBox(self, "订阅信息不完整，请补全订阅信息！")
             return
         connect, cursor = sqlconn()

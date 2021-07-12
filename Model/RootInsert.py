@@ -1,4 +1,6 @@
 import hashlib
+
+import qdarkstyle
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QTableWidgetItem, qApp
 
@@ -7,12 +9,12 @@ from Model.dataUtils import *
 from View import RootInsertWindow
 
 class RootInsert(QtWidgets.QMainWindow, RootInsertWindow.Ui_MainWindow):
-    switch_logout = QtCore.pyqtSignal()
 
     def __init__(self):
         super(RootInsert, self).__init__()
         self.setupUi(self)
         self.initial()
+        self.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
 
     def initial(self):
         self.pushButton_insert.clicked.connect(self.insert)
@@ -38,6 +40,7 @@ class RootInsert(QtWidgets.QMainWindow, RootInsertWindow.Ui_MainWindow):
         connect.close()
 
     def logout(self):
+        qApp.exit(1111)
         pass
         # Values.CurrentUser = ""
         # Values.CurrentPermission = ""
